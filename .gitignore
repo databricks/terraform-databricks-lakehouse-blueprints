@@ -1,0 +1,10 @@
+./aws/base/.terraform/*
+./aws/base_customer_vpc/.terraform/*
+./aws/security/.terraform/*
+./aws/fs_lakehouse/.terraform/*
+./azure/.terraform/*
+./gcp/.terraform/*
+
+
+./.idea
+
