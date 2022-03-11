@@ -2,7 +2,8 @@
 ./aws/base_customer_vpc/.terraform/*
 ./aws/security/.terraform/*
 ./aws/fs_lakehouse/.terraform/*
-./azure/.terraform/*
+./azure/base/.terraform/*
+./azure/managed_vnet/.terraform/*
 ./gcp/.terraform/*
 
 
