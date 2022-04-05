@@ -12,6 +12,7 @@ resource "databricks_notebook" "this" {
 }
 
 
+
 resource "databricks_job" "this" {
   name = "FSI Terraform Demo (${data.databricks_current_user.me.alphanumeric})"
 
@@ -24,6 +25,18 @@ resource "databricks_job" "this" {
     "spark.databricks.acl.dfAclsEnabled" : "true",
     "spark.databricks.repl.allowedLanguages" : "python,sql",
   }
+
+    library {
+  pypi {
+    package = "waterbear"
+  }
+}
+
+    library {
+  pypi {
+    package = "dbl-tempo"
+  }
+}
 
     aws_attributes {
     instance_profile_arn   = databricks_instance_profile.shared.id
