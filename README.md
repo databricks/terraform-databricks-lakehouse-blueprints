@@ -5,7 +5,7 @@
 This set of terraform templates is designed to get every FS practitioner and devops team started quickly with financial services best practice setup as well as highly valuable FS-focused libraries directly in your environment. 
 
 <p align="center">
-  <img src="fs_blueprints.png" width="700px"/>
+  <img src="fs_blueprints.jpg" width="700px"/>
 </p>
 
 
