@@ -4,13 +4,6 @@
 
 This set of terraform templates is designed to get every FS practitioner and devops team started quickly with financial services best practice setup as well as highly valuable FS-focused libraries directly in your environment. 
 
-### Architecture: 
-
-
-<p align="center">
-  <img src="lakehouse.png" width="700px"/>
-</p>
-
 ### Details on What is Packaged: 
 
 What's include in this Terraform package? 
