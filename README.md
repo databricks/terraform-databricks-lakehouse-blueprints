@@ -2,7 +2,7 @@
 
 ### Purpose: 
 
-This terraform template is designed to get every FS practitioner and devops team started quickly with financial services best practice setup as well as highly valuable solutions accelerators directly in your environment. 
+This set of terraform templates is designed to get every FS practitioner and devops team started quickly with financial services best practice setup as well as highly valuable FS-focused libraries directly in your environment. 
 
 ### Architecture: 
 
@@ -21,6 +21,17 @@ What's include in this Terraform package?
 4. Sample Job Writing PII Data out to External Cloud Storage (Best Practice)
 5. PrivateLink Automation for AWS
 
-Coming soon (via PR): 
+### AWS 
 
-1. UC/Delta Sharing (private ATM)
+3 main modules: 
+
+* Workspace from scratch (new)
+* Managed VPC - Private Link workspace
+* Managed VPC - Pre-installed FS libraries, Groups to protect PII, Private Link
+
+
+### Azure 
+
+
+* Workspace from scratch (new)
+* Managed VNET - No public IPs in VNET with private NSGs
