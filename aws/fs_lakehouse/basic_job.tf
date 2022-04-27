@@ -26,17 +26,7 @@ resource "databricks_job" "this" {
     "spark.databricks.repl.allowedLanguages" : "python,sql",
   }
 
-    library {
-  pypi {
-    package = "waterbear"
-  }
-}
 
-    library {
-  pypi {
-    package = "dbl-tempo"
-  }
-}
 
     aws_attributes {
     instance_profile_arn   = databricks_instance_profile.shared.id
@@ -46,6 +36,18 @@ resource "databricks_job" "this" {
     spot_bid_price_percent = 100
   }
   }
+
+    library {
+  pypi {
+    package = "dbl-waterbear"
+  }
+}
+
+    library {
+  pypi {
+    package = "dbl-tempo"
+  }
+}
 
   notebook_task {
     notebook_path = databricks_notebook.this.path

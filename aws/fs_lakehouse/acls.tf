@@ -19,7 +19,7 @@ resource "databricks_group" "de_general" {
 }
 
 resource "databricks_user" "this" {
-  user_name = "ricardo.portilla@databricks.com"
+  user_name = "ricardo@databricks.com"
 }
 
 resource "databricks_group_member" "ds_assign" {
