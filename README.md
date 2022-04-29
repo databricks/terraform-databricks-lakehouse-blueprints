@@ -15,9 +15,10 @@ What's include in this Terraform package?
 
 1. Hardened Cloud Environment (restricted root bucket) 
 2. Restricted PII Rules via Databricks ACLs and Groups
-3. Solutions Accelerators Pre-installed into Databricks Repos 
-4. Sample Job Writing PII Data out to External Cloud Storage (Best Practice)
+3. Pre-installed Libraries for Creating Common Data Models & Time Series Analytics
+4. Example Job with Financial Services Quickstarts
 5. PrivateLink Automation for AWS
+
 
 ### AWS 
 
