@@ -9,6 +9,10 @@ This set of terraform templates is designed to get every FS practitioner and dev
 </p>
 
 
+=======
+### Architecture: 
+
+
 ### Details on What is Packaged: 
 
 What's include in this Terraform package? 
