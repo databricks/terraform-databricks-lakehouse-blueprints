@@ -1,5 +1,3 @@
-variable "databricks_account_id" {}
-
 variable "crossaccount_role_name" {
   type        = string
   description = "Role that you've specified on https://accounts.cloud.databricks.com/#aws"

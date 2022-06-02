@@ -40,5 +40,4 @@ resource "databricks_sql_permissions" "fsi_pii_db" {
     principal  = databricks_group.ds_pii.display_name
     privileges = ["SELECT"]
   }
-  depends_on = [databricks_job.this]
 }

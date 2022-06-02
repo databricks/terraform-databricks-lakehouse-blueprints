@@ -5,6 +5,10 @@
 ./azure/base/.terraform/*
 ./azure/managed_vnet/.terraform/*
 ./gcp/.terraform/*
+./gcp/.idea/*
+./gcp/terraform.tfstate
+./gcp/terraform.tfstate.backup
+./gcp/.terraform.lock.hcl
 ./azure/.idea/*
 ./azure/terraform.tfstate
 ./azure/terraform.tfstate.backup

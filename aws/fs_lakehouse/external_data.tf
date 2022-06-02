@@ -52,13 +52,17 @@ resource "aws_iam_policy" "pass_role_for_s3_access" {
 resource "aws_iam_role_policy_attachment" "cross_account" {
   policy_arn = aws_iam_policy.pass_role_for_s3_access.arn
   role       = var.crossaccount_role_name
+  depends_on = [aws_iam_policy.pass_role_for_s3_access]
 }
 resource "aws_iam_instance_profile" "shared" {
   name = "shared-${local.prefix}-inst-profile"
   role = aws_iam_role.role_for_s3_access.name
+    depends_on = [aws_iam_role.role_for_s3_access]
+
 }
 resource "databricks_instance_profile" "shared" {
   instance_profile_arn = aws_iam_instance_profile.shared.arn
+  depends_on = [aws_iam_instance_profile.shared]
 }
 data "databricks_spark_version" "latest" {}
 data "databricks_node_type" "smallest" {
