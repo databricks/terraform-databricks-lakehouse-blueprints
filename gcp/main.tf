@@ -1,12 +1,17 @@
 variable "prefix" {}
 
+variable "project_id" {}
+
 variable "delegate_from" {
  description = "Allow either user:user.name@example.com, group:deployers@example.com or serviceAccount:sa1@project.iam.gserviceaccount.com to impersonate created service account"
  type        = list(string)
 }
 
 variable google_project {
+}
 
+locals {
+ terraform_service_account = "gcpfs4-sa2@fslakehouse.iam.gserviceaccount.com"
 }
 
 resource "google_service_account" "sa2" {
@@ -49,6 +54,7 @@ resource "google_project_iam_custom_role" "workspace_creator" {
    "serviceusage.services.get",
    "serviceusage.services.list",
    "serviceusage.services.enable"
+
  ]
     project= var.google_project
 
