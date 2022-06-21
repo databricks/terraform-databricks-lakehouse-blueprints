@@ -1,7 +1,7 @@
 provider "google" {
  project = var.google_project
- region  = "us-east1"
- zone    = "us-east1-b"
+ region  = var.region
+ zone    = var.zone
 }
 
 provider "google" {
@@ -15,8 +15,10 @@ provider "google" {
 provider "google" {
  alias = "service_perimeter_sa"
  project         = var.google_project
- access_token    = data.google_service_account_access_token.default.access_token
- request_timeout = "60s"
+ credentials = file(var.gcp_auth_file)
+ request_timeout = "600s"
+ region  = var.region
+ zone    = var.zone
 }
 
 data "google_service_account_access_token" "default" {

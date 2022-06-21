@@ -1,5 +1,11 @@
 variable "prefix" {}
 
+variable "env" {}
+
+variable "zone" {}
+
+variable "gcp_auth_file" {}
+
 variable "project_id" {}
 
 variable "delegate_from" {
@@ -10,8 +16,34 @@ variable "delegate_from" {
 variable google_project {
 }
 
+variable "var_project" {
+        default = "project-name"
+    }
+variable "var_env" {
+        default = "dev"
+    }
+variable "var_company" {
+        default = "company-name"
+    }
+variable "uc1_private_subnet" {
+        default = "10.26.1.0/24"
+    }
+variable "uc1_public_subnet" {
+        default = "10.26.2.0/24"
+    }
+variable "ue1_private_subnet" {
+        default = "10.26.3.0/24"
+    }
+variable "ue1_public_subnet" {
+        default = "10.26.4.0/24"
+    }
+
+variable "region" {
+  default = "us-east1"
+}
+
 locals {
- terraform_service_account = "gcpfs4-sa2@fslakehouse.iam.gserviceaccount.com"
+ terraform_service_account = var.databricks_google_service_account
 }
 
 resource "google_service_account" "sa2" {
