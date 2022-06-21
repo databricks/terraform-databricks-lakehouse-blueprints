@@ -17,6 +17,7 @@ This guide uses the following variables in configurations:
 - `gcp_auth_file` - JSON keys for service account. DO NOT place this file in this project.
 - `env` - Environment used to spin up infrastructure. This is merely a tag.
 - `region` - Region in which infrastructure is spun up.
+- `zone` - Zone specified for the GCP Terraform provider
 
 This guide is provided as-is and you can use this guide as the basis for your custom Terraform module.
 
