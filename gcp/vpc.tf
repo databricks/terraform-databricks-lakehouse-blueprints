@@ -16,14 +16,14 @@ module "vpc" {
    ]
 
    secondary_ranges = {
-       subnet-pods = [
+       subnet_pods = [
            {
                range_name    = "subnet-01-secondary-01"
                ip_cidr_range = "192.168.64.0/23"
            }
        ]
 
-       subnet-services = [
+       subnet_services = [
        {
                range_name    = "subnet-01-secondary-02"
                ip_cidr_range = "192.168.64.0/25"

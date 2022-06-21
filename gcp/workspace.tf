@@ -12,14 +12,6 @@ terraform {
 data "google_client_openid_userinfo" "me" {
 }
 
-resource "databricks_mws_networks" "this" {
-  provider           = databricks
-  account_id         = var.databricks_account_id
-  network_name       = module.vpc.network_name
-
-  vpc_id             = module.vpc.id
-}
-
 resource "databricks_mws_workspaces" "this" {
  provider       = databricks.accounts
  account_id     = var.databricks_account_id
@@ -36,9 +28,16 @@ resource "databricks_mws_workspaces" "this" {
       gke_cluster_master_ip_range = "10.3.0.0/28"
       gke_connectivity_type = "PRIVATE_NODE_PUBLIC_MASTER"
     }
-    network_id = databricks_mws_networks.this.id
+    gcp_managed_network_config {
+      subnet_cidr                  = module.vpc.subnets.subnet_ip
+      gke_cluster_pod_ip_range     = secondary_ranges.subnet-services.ip_cidr_range
+      gke_cluster_service_ip_range = secondary_ranges.subnet-pods.ip_cidr_range
+    }
+}
+
+    }
+    network_id = var.network_id
   }
-  depends_on = [module.vpc]
 }
 
 provider "databricks" {

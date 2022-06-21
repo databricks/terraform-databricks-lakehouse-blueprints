@@ -2,6 +2,8 @@ variable "prefix" {}
 
 variable "env" {}
 
+variable "network_id" {}
+
 variable "zone" {}
 
 variable "gcp_auth_file" {}
