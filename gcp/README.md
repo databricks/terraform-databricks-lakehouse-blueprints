@@ -18,8 +18,14 @@ This guide uses the following variables in configurations:
 - `env` - Environment used to spin up infrastructure. This is merely a tag.
 - `region` - Region in which infrastructure is spun up.
 - `zone` - Zone specified for the GCP Terraform provider
+- `network_id` - UUID which is created once the Network Configuration is created via the Databricks account console for GCP. This should be created using the IP range, secondary ranges, and Google Compute Network is created.
 
-This guide is provided as-is and you can use this guide as the basis for your custom Terraform module.
+This guide is provided as-is and you can use this guide as the basis for your custom Terraform module. Note that for BYO VPC (a.k.a. customer managed VPC), there is a 2-step process as full automation via the tradition `databricks_mws_networks` is not supported at this time for GCP. 
+
+Workaround: 
+
+1. Run `apply` without the workspace.tf file to create all infrastructure and Databricks-compliant VPC with Cloud NAT. 
+2. Run `apply` with workspace.tf to create the workspace once the `network_id` (see description above in variables) is created with the GCP accounts console (Cloud Resouces).
 
 To get started, this code walks you through the following high-level steps:
 - Initialize the required providers

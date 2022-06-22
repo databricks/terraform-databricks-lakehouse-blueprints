@@ -29,15 +29,12 @@ resource "databricks_mws_workspaces" "this" {
       gke_connectivity_type = "PRIVATE_NODE_PUBLIC_MASTER"
     }
     gcp_managed_network_config {
-      subnet_cidr                  = module.vpc.subnets.subnet_ip
-      gke_cluster_pod_ip_range     = secondary_ranges.subnet-services.ip_cidr_range
-      gke_cluster_service_ip_range = secondary_ranges.subnet-pods.ip_cidr_range
-    }
-}
-
+      subnet_cidr                  = google_compute_subnetwork.gc_subnet_fsl.ip_cidr_range
+      gke_cluster_pod_ip_range     = google_compute_subnetwork.gc_subnet_fsl.secondary_ip_range.0.ip_cidr_range
+      gke_cluster_service_ip_range = google_compute_subnetwork.gc_subnet_fsl.secondary_ip_range.1.ip_cidr_range
     }
     network_id = var.network_id
-  }
+}
 }
 
 provider "databricks" {
