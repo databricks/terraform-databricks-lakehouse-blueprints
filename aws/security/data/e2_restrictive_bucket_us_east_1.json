@@ -1,0 +1,51 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Grant Databricks Read Access",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::414351767826:root"
+            },
+            "Action": [
+                "s3:GetObject",
+                "s3:GetObjectVersion",
+                "s3:ListBucket",
+                "s3:GetBucketLocation"
+            ],
+            "Resource": [
+                "arn:aws:s3:::DATABRICKS_ROOT_S3_BUCKET/*",
+                "arn:aws:s3:::DATABRICKS_ROOT_S3_BUCKET"
+            ]
+        },
+        {
+            "Sid": "Grant Databricks Write Access",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::414351767826:root"
+            },
+            "Action": [
+                "s3:PutObject",
+                "s3:DeleteObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::DATABRICKS_ROOT_S3_BUCKET/nvirginia-prod/0_databricks_dev",
+                "arn:aws:s3:::DATABRICKS_ROOT_S3_BUCKET/ephemeral/nvirginia-prod/WORKSPACE_ID/*",
+                "arn:aws:s3:::DATABRICKS_ROOT_S3_BUCKET/nvirginia-prod/WORKSPACE_ID.*/*",
+                "arn:aws:s3:::DATABRICKS_ROOT_S3_BUCKET/nvirginia-prod/WORKSPACE_ID/databricks/init/*/*.sh",
+                "arn:aws:s3:::DATABRICKS_ROOT_S3_BUCKET/nvirginia-prod/WORKSPACE_ID/user/hive/warehouse/*.db/",
+                "arn:aws:s3:::DATABRICKS_ROOT_S3_BUCKET/nvirginia-prod/WORKSPACE_ID/user/hive/warehouse/*.db/*-*",
+                "arn:aws:s3:::DATABRICKS_ROOT_S3_BUCKET/nvirginia-prod/WORKSPACE_ID/user/hive/warehouse/*__PLACEHOLDER__/",
+                "arn:aws:s3:::DATABRICKS_ROOT_S3_BUCKET/nvirginia-prod/WORKSPACE_ID/user/hive/warehouse/*.db/*__PLACEHOLDER__/",
+                "arn:aws:s3:::DATABRICKS_ROOT_S3_BUCKET/nvirginia-prod/WORKSPACE_ID/FileStore/*",
+                "arn:aws:s3:::DATABRICKS_ROOT_S3_BUCKET/nvirginia-prod/WORKSPACE_ID/databricks/mlflow/*",
+                "arn:aws:s3:::DATABRICKS_ROOT_S3_BUCKET/nvirginia-prod/WORKSPACE_ID/databricks/mlflow-*/*",
+                "arn:aws:s3:::DATABRICKS_ROOT_S3_BUCKET/nvirginia-prod/WORKSPACE_ID/mlflow-*/*",
+                "arn:aws:s3:::DATABRICKS_ROOT_S3_BUCKET/nvirginia-prod/WORKSPACE_ID/pipelines/*",
+                "arn:aws:s3:::DATABRICKS_ROOT_S3_BUCKET/nvirginia-prod/WORKSPACE_ID/local_disk0/tmp/*",
+                "arn:aws:s3:::DATABRICKS_ROOT_S3_BUCKET/nvirginia-prod/WORKSPACE_ID/tmp/*",
+                "arn:aws:s3:::DATABRICKS_ROOT_S3_BUCKET/nvirginia-prod/WORKSPACE_ID/home/*"
+            ]
+        }
+    ]
+}
