@@ -14,6 +14,10 @@ This guide uses the following variables. Please all variables here in a terrafor
 - `relay_vpce_service` - VPC endpoint service for backend relays. This is region-dependent; for example, for us-east-1 the service is available on the Databricks Private Link documentation - `com.amazonaws.vpce.us-east-1.vpce-svc-00018a8c3ff62ffdf`
 - `workspace_vpce_service` - VPC endpoint service for workspace communication. This is region-dependent; for example, for us-east-1 the service is available on the Databricks Private Link documentation - `com.amazonaws.vpce.us-east-1.vpce-svc-09143d1e626de2f04`
 - `vpce_subnet_cidr` - CIDR for deployment of the VPC endpoint subnets
+-  `vpc_id` - VPC identifier for existing customer managed VPC
+-  `subnet_ids` - private subnets associated with the Databricks-compliant VPC. This should be a list of strings specified by type(string)
+-  `security_group_id` - security group ID used for VPC subnets
+-  `cross_account_arn` - existing cross-account role arn
 
 This guide is provided as-is and you can use this guide as the basis for your custom Terraform module.
 
