@@ -1,28 +1,27 @@
-#data "aws_subnet" "ws_vpc_subnets" {
-#  for_each = toset(module.vpc.private_subnets)
-#  id       = each.value
-#  depends_on = [module.vpc]
-#}
+data "aws_subnet" "ws_vpc_subnets" {
+  for_each = toset(var.subnet_ids)
+  id       = each.value
+}
 
-#locals {
-#  vpc_cidr_blocks = [
-#    for subnet in data.aws_subnet.ws_vpc_subnets :
-#      subnet.cidr_block
-#    ]
-#}
+locals {
+  vpc_cidr_blocks = [
+    for subnet in data.aws_subnet.ws_vpc_subnets :
+      subnet.cidr_block
+    ]
+}
 
 // security group for data plane VPC endpoints for backend/relay connections
 resource "aws_security_group" "dataplane_vpce" {
   name        = "Data Plane VPC endpoint security group"
   description = "Security group shared with relay and workspace endpoints"
-  vpc_id      = module.vpc.vpc_id
+  vpc_id      = var.vpc_id
 
   ingress {
     description      = "Inbound rules"
     from_port        = 443
     to_port          = 443
     protocol         = "tcp"
-    cidr_blocks      = concat([var.vpce_subnet_cidr], [module.vpc.vpc_cidr_block])
+    cidr_blocks      = concat([var.vpce_subnet_cidr], local.vpc_cidr_blocks)
   }
 
   ingress {
@@ -30,7 +29,7 @@ resource "aws_security_group" "dataplane_vpce" {
     from_port        = 6666
     to_port          = 6666
     protocol         = "tcp"
-    cidr_blocks      = concat([var.vpce_subnet_cidr], [module.vpc.vpc_cidr_block])
+    cidr_blocks      = concat([var.vpce_subnet_cidr], local.vpc_cidr_blocks)
   }
 
   egress {
@@ -38,7 +37,7 @@ resource "aws_security_group" "dataplane_vpce" {
     from_port        = 443
     to_port          = 443
     protocol         = "tcp"
-    cidr_blocks      = concat([var.vpce_subnet_cidr], [module.vpc.vpc_cidr_block])
+    cidr_blocks      = concat([var.vpce_subnet_cidr], local.vpc_cidr_blocks)
   }
 
   egress {
@@ -46,7 +45,7 @@ resource "aws_security_group" "dataplane_vpce" {
     from_port        = 6666
     to_port          = 6666
     protocol         = "tcp"
-    cidr_blocks      = concat([var.vpce_subnet_cidr], [module.vpc.vpc_cidr_block])
+    cidr_blocks      = concat([var.vpce_subnet_cidr], local.vpc_cidr_blocks)
   }
 
   tags = merge(

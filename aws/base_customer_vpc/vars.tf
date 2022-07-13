@@ -14,6 +14,14 @@ variable "cidr_block" {
   default = "10.4.0.0/16"
 }
 
+variable "vpc_id" {}
+variable "subnet_ids" {
+  type=list(string)
+}
+variable "security_group_id" {}
+
+variable "cross_account_arn" {}
+
 locals {
   prefix = "private-link-ws"
 }

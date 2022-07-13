@@ -1,6 +1,6 @@
 // this subnet houses the data plane VPC endpoints
 resource "aws_subnet" "dataplane_vpce" {
-  vpc_id     = module.vpc.vpc_id
+  vpc_id     = var.vpc_id
   cidr_block = var.vpce_subnet_cidr
 
   tags = merge(
@@ -12,7 +12,7 @@ resource "aws_subnet" "dataplane_vpce" {
 }
 
 resource "aws_route_table" "this" {
-    vpc_id = module.vpc.vpc_id
+    vpc_id = var.vpc_id
 
     tags = merge(
     data.aws_vpc.prod.tags,
