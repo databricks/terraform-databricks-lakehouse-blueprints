@@ -32,6 +32,7 @@
 ./azure/terraform.tfstate.backup
 ./azure/.terraform.lock.hcl
 
+
 .idea
 ./.idea
 ./.idea/*
