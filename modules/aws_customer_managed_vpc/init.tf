@@ -1,7 +1,12 @@
 terraform {
   backend "s3" {
+<<<<<<< HEAD
     bucket = "databricks-terraform-blueprints-aws-fs-lakehouse"
     key = "aws_regulated_lakehouse.tfstate"
+=======
+    bucket = "databricks-terraform-blueprints"
+    key = "aws_customer_managed_vpc.tfstate"
+>>>>>>> d7d0625 (add new files for module)
     region = "us-east-1"
   }
   required_providers {

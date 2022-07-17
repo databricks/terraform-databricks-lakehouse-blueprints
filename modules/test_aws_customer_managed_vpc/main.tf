@@ -2,6 +2,7 @@ module "aws_customer_managed_vpc" {
   source = "../aws_customer_managed_vpc/"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   databricks_account_id       = var.databricks_account_id
   databricks_account_username = var.databricks_account_username
   databricks_account_password = var.databricks_account_password
@@ -14,6 +15,8 @@ module "aws_customer_managed_vpc" {
   security_group_id           = var.security_group_id
   cross_account_arn           = var.cross_account_arn
 =======
+=======
+>>>>>>> d7d0625 (add new files for module)
   databricks_account_id = var.databricks_account_id
   databricks_account_username = var.databricks_account_username
   databricks_account_password = var.databricks_account_password
@@ -25,13 +28,20 @@ module "aws_customer_managed_vpc" {
   subnet_ids = var.subnet_ids
   security_group_id = var.security_group_id
   cross_account_arn = var.cross_account_arn
+<<<<<<< HEAD
+>>>>>>> d7d0625 (add new files for module)
+=======
 >>>>>>> d7d0625 (add new files for module)
 }
 
 output "module_workspace_url" {
   value = module.aws_customer_managed_vpc.workspace_url
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d7d0625 (add new files for module)
 =======
 }
 >>>>>>> d7d0625 (add new files for module)
