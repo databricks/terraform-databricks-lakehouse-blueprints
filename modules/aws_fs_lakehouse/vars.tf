@@ -3,6 +3,17 @@ variable "crossaccount_role_name" {
   description = "Role that you've specified on https://accounts.cloud.databricks.com/#aws"
 }
 
+variable "workspace_url" {
+
+}
+variable "databricks_account_username" {
+
+}
+
+variable "databricks_account_password" {
+
+}
+
 locals  {
   region = "us-east-1"
 }

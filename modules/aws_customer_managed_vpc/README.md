@@ -2,10 +2,11 @@
 page_title: "Provisioning Secure Databricks Workspaces on AWS with Terraform"
 ---
 
-# How to Deploy a Lakehouse Blueprint using Best Practices and Industry Helper Libraries
+# Module to Deploy a Lakehouse Blueprint using Best Practices and Industry Helper Libraries
 
-This guide uses the following variables. Please all variables here in a terraform.tfvars file (outside the github project) and reference it using `terraform apply -var-file="<location for tfvars file>/terraform.tfvars"`.
+This modules uses the following input variables. Please all variables here in a terraform.tfvars file (outside the github project) and reference it using `terraform apply -var-file="<location for tfvars file>/terraform.tfvars"`.
 
+### Input Variables 
 - `databricks_account_id`: The ID per Databricks AWS account used for accessing account management APIs. After the AWS E2 account is created, this is available after logging into [https://accounts.cloud.databricks.com](https://accounts.cloud.databricks.com).
 - `databricks_account_username`: E2 user account email address
 - `databricks_account_password` - E2 account password
@@ -19,9 +20,32 @@ This guide uses the following variables. Please all variables here in a terrafor
 -  `security_group_id` - security group ID used for VPC subnets
 -  `cross_account_arn` - existing cross-account role arn
 
-This guide is provided as-is and you can use this guide as the basis for your custom Terraform module.
+### Output Variables 
+
+-  `workspace_url` - URL which allows users to log into the created regulated workspace
+-  `workspace_id` - Numeric ID mapping to the newly created regulated workspace
 
 
+### Usage
+
+```hcl
+module "aws_customer_managed_vpc" {
+  source = "databricks/aws_customer_managed_vpc/"
+  
+  databricks_account_id = # see description above
+  databricks_account_username = # see description above
+  databricks_account_password = # see description above
+  region = # see description above
+  relay_vpce_service = # see description above
+  workspace_vpce_service = # see description above
+  vpce_subnet_cidr = # see description above
+  vpc_id = # see description above
+  subnet_ids = # see description above
+  security_group_id = # see description above
+  cross_account_arn = # see description above
+  
+}
+```
 
 ## Provider initialization
 
