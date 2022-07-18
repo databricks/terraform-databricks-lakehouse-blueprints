@@ -1,6 +1,5 @@
 // Inputs are 2 subnets and one security group from existing VPC that will be used for your Databricks workspace
 resource "databricks_mws_networks" "this" {
-  provider           = databricks.mws
   account_id         = var.databricks_account_id
   network_name       = "${local.prefix}-network"
   security_group_ids = [var.security_group_id]
@@ -13,7 +12,6 @@ resource "databricks_mws_networks" "this" {
 }
 
 resource "databricks_mws_private_access_settings" "pas" {
-  provider                     = databricks.mws
   account_id                   = var.databricks_account_id
   private_access_settings_name = "Private Access Settings for ${local.prefix}"
   region                       = var.region
@@ -21,7 +19,6 @@ resource "databricks_mws_private_access_settings" "pas" {
 }
 
 resource "databricks_mws_workspaces" "this" {
-  provider                   = databricks.mws
   account_id                 = var.databricks_account_id
   aws_region                 = var.region
   workspace_name             = local.prefix
@@ -32,14 +29,4 @@ resource "databricks_mws_workspaces" "this" {
   private_access_settings_id = databricks_mws_private_access_settings.pas.private_access_settings_id
   pricing_tier               = "ENTERPRISE"
   depends_on                 = [databricks_mws_networks.this]
-}
-
-output "workspace_url" {
-  value = databricks_mws_workspaces.this.workspace_url
-  description = "URL for newly created Databricks workspace"
-}
-
-output "workspace_id" {
-  value = databricks_mws_workspaces.this.id
-  description = "Workspace numeric ID"
 }

@@ -7,8 +7,8 @@ variable "workspace_vpce_service" {}
 variable "relay_vpce_service" {}
 variable "vpce_subnet_cidr" {}
 
-variable "private_dns_enabled" { default = true}
-variable "tags" { default = {}}
+variable "private_dns_enabled" { default = true }
+variable "tags" { default = {} }
 
 variable "cidr_block" {
   default = "10.4.0.0/16"
@@ -16,7 +16,7 @@ variable "cidr_block" {
 
 variable "vpc_id" {}
 variable "subnet_ids" {
-  type=list(string)
+  type = list(string)
 }
 variable "security_group_id" {}
 
