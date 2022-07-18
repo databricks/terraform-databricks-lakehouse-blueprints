@@ -1,5 +1,5 @@
 data "aws_vpc" "prod" {
-  id    = var.vpc_id
+  id = var.vpc_id
 }
 
 resource "aws_vpc_endpoint" "backend_rest" {
@@ -12,7 +12,7 @@ resource "aws_vpc_endpoint" "backend_rest" {
   // Run 1 - comment the `private_dns_enabled` line
   // Run 2 - uncomment the `private_dns_enabled` line
   // private_dns_enabled = var.private_dns_enabled
-  depends_on         = [aws_subnet.dataplane_vpce]
+  depends_on = [aws_subnet.dataplane_vpce]
 }
 
 resource "aws_vpc_endpoint" "relay" {
@@ -25,12 +25,11 @@ resource "aws_vpc_endpoint" "relay" {
   // Run 1 - comment the `private_dns_enabled` line
   // Run 2 - uncomment the `private_dns_enabled` line
   // private_dns_enabled = var.private_dns_enabled
-  depends_on         = [aws_subnet.dataplane_vpce]
+  depends_on = [aws_subnet.dataplane_vpce]
 }
 
 
 resource "databricks_mws_vpc_endpoint" "backend_rest_vpce" {
-  provider            = databricks.mws
   account_id          = var.databricks_account_id
   aws_vpc_endpoint_id = aws_vpc_endpoint.backend_rest.id
   vpc_endpoint_name   = "${local.prefix}-vpc-backend-${var.vpc_id}"
@@ -39,7 +38,6 @@ resource "databricks_mws_vpc_endpoint" "backend_rest_vpce" {
 }
 
 resource "databricks_mws_vpc_endpoint" "relay" {
-  provider            = databricks.mws
   account_id          = var.databricks_account_id
   aws_vpc_endpoint_id = aws_vpc_endpoint.relay.id
   vpc_endpoint_name   = "${local.prefix}-vpc-relay-${var.vpc_id}"
