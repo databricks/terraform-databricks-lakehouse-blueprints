@@ -1,6 +1,7 @@
 terraform {
   backend "s3" {
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<<< HEAD:modules/aws_fs_lakehouse/init.tf
     bucket = "databricks-terraform-blueprints-aws-fs-lakehouse"
     key = "aws_regulated_lakehouse.tfstate"
@@ -12,6 +13,10 @@ terraform {
     bucket = "databricks-terraform-blueprints-aws-fs-lakehouse"
     key = "aws_regulated_lakehouse.tfstate"
 >>>>>>> d7d0625 (add new files for module)
+=======
+    bucket = "databricks-terraform-blueprints-aws-fs-lakehouse"
+    key = "aws_regulated_lakehouse.tfstate"
+>>>>>>> main
     region = "us-east-1"
   }
   required_providers {
