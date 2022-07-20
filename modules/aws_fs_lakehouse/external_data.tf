@@ -55,14 +55,14 @@ resource "aws_iam_role_policy_attachment" "cross_account" {
   depends_on = [aws_iam_policy.pass_role_for_s3_access]
 }
 resource "aws_iam_instance_profile" "shared" {
-  name = "shared-${local.prefix}-inst-profile"
-  role = aws_iam_role.role_for_s3_access.name
-    depends_on = [aws_iam_role.role_for_s3_access]
+  name       = "shared-${local.prefix}-inst-profile"
+  role       = aws_iam_role.role_for_s3_access.name
+  depends_on = [aws_iam_role.role_for_s3_access]
 
 }
 resource "databricks_instance_profile" "shared" {
   instance_profile_arn = aws_iam_instance_profile.shared.arn
-  depends_on = [aws_iam_instance_profile.shared]
+  depends_on           = [aws_iam_instance_profile.shared]
 }
 data "databricks_spark_version" "latest" {}
 data "databricks_node_type" "smallest" {
@@ -70,8 +70,8 @@ data "databricks_node_type" "smallest" {
 }
 
 resource "aws_s3_bucket" "ext_bucket" {
-  bucket = "${local.ext_s3_bucket}"
-   acl    = "private"
+  bucket = local.ext_s3_bucket
+  acl    = "private"
   versioning {
     enabled = false
   }
@@ -115,10 +115,10 @@ data "aws_iam_policy_document" "read_write" {
     }
 
     actions = [
-        "s3:PutObject",
-        "s3:GetObject",
-        "s3:DeleteObject",
-        "s3:PutObjectAcl"
+      "s3:PutObject",
+      "s3:GetObject",
+      "s3:DeleteObject",
+      "s3:PutObjectAcl"
     ]
 
     resources = [

@@ -35,9 +35,9 @@ data "template_file" "data" {
 }
 
 resource "aws_s3_bucket_policy" "root_bucket_policy" {
-  for_each = fileset("${path.module}", "data/e2_restrictive_bucket_${local.region_bucket_policy}.json")
+  for_each   = fileset("${path.module}", "data/e2_restrictive_bucket_${local.region_bucket_policy}.json")
   bucket     = aws_s3_bucket.root_storage_bucket.id
-  policy     = replace(replace(data.template_file.data[each.value].rendered, "DATABRICKS_ROOT_S3_BUCKET", aws_s3_bucket.root_storage_bucket.bucket), "WORKSPACE_ID",   var.databricks_workspace_id )
+  policy     = replace(replace(data.template_file.data[each.value].rendered, "DATABRICKS_ROOT_S3_BUCKET", aws_s3_bucket.root_storage_bucket.bucket), "WORKSPACE_ID", var.databricks_workspace_id)
   depends_on = [aws_s3_bucket_public_access_block.root_storage_bucket]
 }
 

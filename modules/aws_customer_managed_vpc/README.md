@@ -25,7 +25,6 @@ This module uses the following input variables. Please all variables here in a t
 - `workspace_url` - URL which allows users to log into the created regulated workspace
 - `workspace_id` - Numeric ID mapping to the newly created regulated workspace
 
-
 ```hcl
 module "aws_customer_managed_vpc" {
   source = "databricks/aws_customer_managed_vpc/"

@@ -315,36 +315,36 @@ resource "databricks_job" "this" {
     node_type_id  = data.databricks_node_type.smallest.id
 
     spark_conf = {
-    "spark.databricks.repl.allowedLanguages" : "python,sql",
-  }
+      "spark.databricks.repl.allowedLanguages" : "python,sql",
+    }
 
 
 
     aws_attributes {
-    instance_profile_arn   = databricks_instance_profile.shared.id
-    availability           = "SPOT"
-    zone_id                = "us-east-1"
-    first_on_demand        = 1
-    spot_bid_price_percent = 100
-  }
+      instance_profile_arn   = databricks_instance_profile.shared.id
+      availability           = "SPOT"
+      zone_id                = "us-east-1"
+      first_on_demand        = 1
+      spot_bid_price_percent = 100
+    }
   }
 
-    library {
-  pypi {
-    package = "dbl-waterbear"
+  library {
+    pypi {
+      package = "dbl-waterbear"
+    }
   }
-}
 
-    library {
-  pypi {
-    package = "dbl-tempo"
+  library {
+    pypi {
+      package = "dbl-tempo"
+    }
   }
-}
 
   notebook_task {
     notebook_path = databricks_notebook.this.path
   }
-depends_on = [databricks_instance_profile.shared]
+  depends_on = [databricks_instance_profile.shared]
 }
 
 output "notebook_url" {

@@ -22,8 +22,8 @@ output "databricks_host" {
 // initialize provider in normal mode
 provider "databricks" {
   // in normal scenario you won't have to give providers aliases
-  alias = "created_workspace"
-  host = databricks_mws_workspaces.this.workspace_url
+  alias    = "created_workspace"
+  host     = databricks_mws_workspaces.this.workspace_url
   username = var.databricks_account_username
   password = var.databricks_account_password
 }
@@ -31,8 +31,8 @@ provider "databricks" {
 
 // create PAT token to provision entities within workspace
 resource "databricks_token" "pat" {
-  provider = databricks.created_workspace
-  comment  = "Terraform Provisioning"
+  provider         = databricks.created_workspace
+  comment          = "Terraform Provisioning"
   lifetime_seconds = 86400
 }
 
@@ -45,5 +45,5 @@ output "databricks_token" {
 
 // export token for integration tests to run on
 output "databricks_workspace_id" {
-  value     = databricks_mws_networks.this.workspace_id
+  value = databricks_mws_networks.this.workspace_id
 }

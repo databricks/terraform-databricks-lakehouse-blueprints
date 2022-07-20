@@ -1,21 +1,18 @@
-## Deploy Your Financial Services Lakehouse Architecture 
+# Deploy Your Financial Services Lakehouse Architecture
 
-### Purpose: 
+## Purpose
 
-This set of terraform templates is designed to get every FS practitioner and devops team started quickly with financial services best practice setup as well as highly valuable FS-focused libraries directly in your environment. 
+This set of terraform templates is designed to get every FS practitioner and devops team started quickly with financial services best practice setup as well as highly valuable FS-focused libraries directly in your environment.
 
-<p align="center">
-  <img src="fs_blueprints.jpg" width="700px"/>
-</p>
+![image info](fs_blueprints.jpg)
 
+---
 
-=======
-### Architecture: 
+## Architecture
 
+### Details on What is Packaged
 
-### Details on What is Packaged: 
-
-What's include in this Terraform package? 
+What's include in this Terraform package?
 
 1. Hardened Cloud Environment (restricted root bucket) for AWS
 2. Basic Example of Permissions using Databricks ACLs and Groups for AWS
@@ -25,23 +22,19 @@ What's include in this Terraform package?
 6. Customer-Managed VPC with GCP
 7. NPIP Architecture & Workspace Creation with Azure
 
+### AWS
 
-### AWS 
-
-3 main modules: 
+3 main modules:
 
 * Workspace from scratch (new)
 * Managed VPC - Private Link workspace
 * Managed VPC - Pre-installed FS libraries, Groups to protect PII, Private Link
 
-
-### Azure 
-
+### Azure
 
 * Workspace from scratch (new)
 * Managed VNET - No public IPs in VNET with private NSGs
 
-
-### GCP 
+### GCP
 
 * Bring-your-own-VPC configuration with GCP
