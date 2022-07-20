@@ -4,13 +4,13 @@
 
 This set of terraform templates is designed to get every FS practitioner and devops team started quickly with financial services best practice setup as well as highly valuable FS-focused libraries directly in your environment.
 
-![image info](fs_blueprints.jpg)
+![Financial Services Blueprints](https://raw.githubusercontent.com/databricks/terraform-databricks-lakehouse-blueprints/main/fs_blueprints.jpg)
 
 ---
 
 ## Architecture
 
-### Details on What is Packaged
+## Details on what is Packaged
 
 What's include in this Terraform package?
 
@@ -23,8 +23,6 @@ What's include in this Terraform package?
 7. NPIP Architecture & Workspace Creation with Azure
 
 ### AWS
-
-3 main modules:
 
 * Workspace from scratch (new)
 * Managed VPC - Private Link workspace
