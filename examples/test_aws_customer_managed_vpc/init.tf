@@ -1,8 +1,8 @@
 terraform {
   backend "s3" {
-    bucket = "databricks-terraform-blueprints"
-    key    = "test_aws_customer_managed_vpc.tfstate"
-    region = "us-east-1"
+    bucket  = "databricks-terraform-blueprints"
+    key     = "test_aws_customer_managed_vpc.tfstate"
+    region  = "us-east-1"
     profile = "default"
   }
   required_providers {
@@ -18,7 +18,7 @@ terraform {
 }
 
 provider "aws" {
-  region = var.region
+  region  = var.region
   profile = "default"
 }
 

@@ -1,7 +1,7 @@
 variable "databricks_account_username" {}
 variable "databricks_account_password" {}
 variable "databricks_account_id" {
-  type=string
+  type        = string
   description = "env variable"
 }
 
@@ -18,8 +18,8 @@ variable "region" {
 }
 
 locals {
-region_bucket_policy = (
-  replace(var.region, "-", "_")
+  region_bucket_policy = (
+    replace(var.region, "-", "_")
   )
 }
 

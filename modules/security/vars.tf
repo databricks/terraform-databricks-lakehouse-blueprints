@@ -17,8 +17,8 @@ variable "region" {
 }
 
 locals {
-region_bucket_policy = (
-  replace(var.region, "-", "_")
+  region_bucket_policy = (
+    replace(var.region, "-", "_")
   )
 }
 

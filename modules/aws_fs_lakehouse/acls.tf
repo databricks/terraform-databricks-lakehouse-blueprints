@@ -8,14 +8,14 @@ resource "databricks_group" "da_general" {
   display_name               = "Data Analyst - General"
   allow_cluster_create       = false
   allow_instance_pool_create = false
-  databricks_sql_access = true
+  databricks_sql_access      = true
 }
 
 resource "databricks_group" "de_general" {
   display_name               = "Data Engineer - General"
   allow_cluster_create       = false
   allow_instance_pool_create = false
-  databricks_sql_access = true
+  databricks_sql_access      = true
 }
 
 resource "databricks_user" "this" {

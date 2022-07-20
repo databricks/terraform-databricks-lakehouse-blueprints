@@ -14,16 +14,16 @@ variable "databricks_account_password" {
 
 }
 
-locals  {
+locals {
   region = "us-east-1"
 }
 
 locals {
-prefix = "fs-lakehouse"
+  prefix = "fs-lakehouse"
 }
 
 locals {
-	tags = {"org"="fsi"}
+  tags = { "org" = "fsi" }
 }
 
 locals {
