@@ -1,5 +1,5 @@
 ---
-page_title: "Provisioning Secure Databricks Workspaces on GCP with Terraform"
+page_title: "Provisioning Azure Databricks Workspaces with Private Link and Data Exfiltration Protection with Terraform"
 ---
 
 # How to Deploy a Lakehouse Blueprint using Best Practices and Industry Helper Libraries
