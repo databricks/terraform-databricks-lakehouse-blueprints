@@ -33,6 +33,14 @@ This guide uses the following variables in configurations:
 
 This guide is provided as-is and you can use this guide as the basis for your custom Terraform module. This module creates the Azure Spoke vnet as per the architecture in the Databricks [blog](https://databricks.com/blog/2020/03/27/data-exfiltration-protection-with-azure-databricks.html)
 
+## Output Variables
+
+- `rg_name` - Azure resource group for Spoke VNET
+- `vnet_name` - VNET name
+- `vnet_id` - VNET ID
+- `nsg_id` - Network security ID
+- `route_table_id` - Route table ID referenced in VNET injected workspace
+
 ## Provider initialization
 
 Initialize [provider with `mws` alias](https://www.terraform.io/language/providers/configuration#alias-multiple-provider-configurations) to set up account-level resources.
