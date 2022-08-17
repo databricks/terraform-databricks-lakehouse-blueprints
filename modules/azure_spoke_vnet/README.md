@@ -4,8 +4,6 @@ page_title: "Provisioning Azure Spoke VNET as per Data Exfiltration Protection w
 
 [Reference documentation and blog](https://databricks.com/blog/2020/03/27/data-exfiltration-protection-with-azure-databricks.html)
 
-# How to Deploy a Lakehouse Blueprint using Best Practices and Industry Helper Libraries
-
 This guide uses the following variables in configurations:
 
 - `location`: (Required) The location for the resources in this module
@@ -42,8 +40,6 @@ This guide is provided as-is and you can use this guide as the basis for your cu
 - `route_table_id` - Route table ID referenced in VNET injected workspace
 
 ## Provider initialization
-
-Initialize [provider with `mws` alias](https://www.terraform.io/language/providers/configuration#alias-multiple-provider-configurations) to set up account-level resources.
 
 ```hcl
 terraform {
