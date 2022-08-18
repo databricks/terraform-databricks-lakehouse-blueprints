@@ -31,7 +31,7 @@ What's include in this Terraform package?
 ### Azure
 
 * Workspace from scratch (new)
-* Hub and Spoke Architecture with Azure Databricks created per Spoke - The infrastructure deployed matches the design in the Data Exfiltration Prevention blog released by Databricks [here](https://www.databricks.com/blog/2020/03/27/data-exfiltration-protection-with-azure-databricks.html)
+* Hub and Spoke Architecture with Azure Databricks workspace created per Spoke - The infrastructure deployed matches the design in the Data Exfiltration Prevention blog released by Databricks [here](https://www.databricks.com/blog/2020/03/27/data-exfiltration-protection-with-azure-databricks.html)
 
 ### GCP
 
