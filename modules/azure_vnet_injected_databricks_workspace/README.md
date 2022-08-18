@@ -2,7 +2,7 @@
 page_title: "Provisioning Azure Databricks Workspaces with Private Link and Data Exfiltration Protection with Terraform"
 ---
 
-# How to Deploy a Lakehouse Blueprint using Best Practices and Industry Helper Libraries
+# How to Deploy a Secure Azure Databricks Workspace, Hardened To Prevent Data Exfiltration.
 
 This guide uses the following variables in configurations:
 
@@ -21,8 +21,6 @@ This guide uses the following variables in configurations:
 This guide is provided as-is and you can use this guide as the basis for your custom Terraform module. This module creates the Azure Databricks workspace based on the hub and spoke architecture. The spoke module is in the same folder as this module and available to use before using this module.
 
 ## Provider initialization
-
-Initialize [provider with `mws` alias](https://www.terraform.io/language/providers/configuration#alias-multiple-provider-configurations) to set up account-level resources.
 
 ```hcl
 terraform {
