@@ -8,10 +8,10 @@
 locals {
   title_cased_location = title(var.location)
   service_tags = {
-    "databricks" : { "tag" : "AzureDatabricks", "port" : "443" },
-    "sql" : { "tag" : "Sql.${local.title_cased_location}", "port" : "3306" },
-    "storage" : { "tag" : "Storage.${local.title_cased_location}", "port" : "443" },
-    "eventhub" : { "tag" : "EventHub.${local.title_cased_location}", "port" : "9093" }
+    "adb" : { "tag" : "AzureDatabricks", "port" : "443" },
+    "adb-metastore" : { "tag" : "Sql.${local.title_cased_location}", "port" : "3306" },
+    "adb-storage" : { "tag" : "Storage.${local.title_cased_location}", "port" : "443" },
+    "adb-eventhub" : { "tag" : "EventHub.${local.title_cased_location}", "port" : "9093" }
   }
 }
 
@@ -27,10 +27,19 @@ resource "azurerm_network_security_group" "this" {
   resource_group_name = azurerm_resource_group.this.name
 }
 
+resource "azurerm_route" "service_tags" {
+  for_each = local.service_tags
+  name = each.key
+  resource_group_name = azurerm_resource_group.this.name
+  route_table_name = azurerm_route_table.this.name
+  address_prefix = each.value.tag
+  next_hop_type = "Internet"
+}
+
 resource "azurerm_route" "databricks_routes" {
   for_each            = var.routes
   name                = each.key
-  resource_group_name = data.azurerm_resource_group.vpcx_rg.name
+  resource_group_name = azurerm_resource_group.this.name
   route_table_name    = azurerm_route_table.this.name
   address_prefix      = each.value.address_prefix
   next_hop_type       = each.value.next_hop_type
