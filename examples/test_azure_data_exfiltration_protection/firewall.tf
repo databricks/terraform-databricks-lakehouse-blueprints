@@ -44,8 +44,8 @@ resource "azurerm_firewall_policy_rule_collection_group" "this" {
     action   = "Allow"
 
     rule {
-      name             = "public-repos"
-      source_addresses = ["*"]
+      name              = "public-repos"
+      source_addresses  = ["*"]
       destination_fqdns = var.public_repos
       protocols {
         port = "443"

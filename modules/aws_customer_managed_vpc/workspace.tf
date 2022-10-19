@@ -16,6 +16,8 @@ resource "databricks_mws_private_access_settings" "pas" {
   private_access_settings_name = "Private Access Settings for ${local.prefix}"
   region                       = var.region
   public_access_enabled        = true
+  private_access_level         = "ACCOUNT"
+
 }
 
 resource "databricks_mws_workspaces" "this" {
