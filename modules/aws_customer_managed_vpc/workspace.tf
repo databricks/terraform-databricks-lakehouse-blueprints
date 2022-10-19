@@ -7,8 +7,8 @@ resource "databricks_mws_networks" "this" {
   vpc_id             = var.vpc_id
   vpc_endpoints {
     dataplane_relay = [databricks_mws_vpc_endpoint.relay.vpc_endpoint_id]
-   rest_api        = [databricks_mws_vpc_endpoint.backend_rest_vpce.vpc_endpoint_id]
-}
+    rest_api        = [databricks_mws_vpc_endpoint.backend_rest_vpce.vpc_endpoint_id]
+  }
 }
 
 resource "databricks_mws_private_access_settings" "pas" {
@@ -16,7 +16,7 @@ resource "databricks_mws_private_access_settings" "pas" {
   private_access_settings_name = "Private Access Settings for ${local.prefix}"
   region                       = var.region
   public_access_enabled        = true
-    private_access_level = "ACCOUNT"
+  private_access_level         = "ACCOUNT"
 
 }
 

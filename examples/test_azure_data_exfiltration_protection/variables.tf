@@ -9,27 +9,27 @@ variable "location" {
 }
 
 variable "hub_resource_group_name" {
-  type = string
+  type        = string
   description = "(Optional) The name for the hub Resource Group"
-  default = "hub-rg"
+  default     = "hub-rg"
 }
 
 variable "hub_vnet_name" {
   type        = string
   description = "(Optional) The name for the hub Virtual Network"
-  default = "hub-vnet"
+  default     = "hub-vnet"
 }
 
 variable "hub_vnet_address_space" {
-  type = string
+  type        = string
   description = "(Optional) The address space for the hub Virtual Network"
-  default = "10.3.1.0/24"
+  default     = "10.3.1.0/24"
 }
 
 variable "spoke_resource_group_name" {
   type        = string
   description = "(Optional) The name of the Resource Group to create"
-  default = "spoke-rg"
+  default     = "spoke-rg"
 }
 
 variable "spoke_vnet_address_space" {
@@ -39,7 +39,7 @@ variable "spoke_vnet_address_space" {
 }
 
 variable "databricks_workspace_name" {
-  type = string
+  type        = string
   description = "(Required) The name of the Azure Databricks Workspace to deploy"
 }
 
