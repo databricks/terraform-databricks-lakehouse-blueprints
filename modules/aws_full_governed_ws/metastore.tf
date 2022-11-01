@@ -1,5 +1,4 @@
 resource "databricks_metastore" "this" {
-  provider      = databricks.mws
   name          = "primary"
   storage_root  = "s3://${aws_s3_bucket.metastore.id}/metastore"
   owner         = var.unity_admin_group
