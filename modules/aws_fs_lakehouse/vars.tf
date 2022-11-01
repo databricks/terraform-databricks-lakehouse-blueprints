@@ -7,11 +7,9 @@ variable "workspace_url" {
 
 }
 variable "databricks_account_username" {
-
 }
 
 variable "databricks_account_password" {
-
 }
 
 variable "allow_ip_list" { type= list(string)}
