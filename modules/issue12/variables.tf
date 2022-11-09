@@ -1,114 +1,53 @@
-variable "project_id" {
+variable "project_name" {
   type        = string
-  description = "Project ID for the Workspace"
-}
-variable "subscription_id" {
-  type        = string
-  description = "Azure subscription id for terraform auth"
+  description = "(Required) The name of the project associated with the infrastructure to be managed by Terraform"
 }
 
-variable "client_id" {
+variable "location" {
   type        = string
-  description = "Azure service principal client id for terraform auth"
+  description = "(Required) The location for the resources in this module"
 }
 
-variable "client_secret" {
+variable "spoke_vnet_address_space" {
   type        = string
-  description = "Azure service principal client secret for terraform auth"
-  sensitive   = true
+  description = "(Optional) The address space for the spoke Virtual Network"
+  default     = "10.2.1.0/24"
 }
 
-variable "tenant_id" {
+variable "databricks_workspace_name" {
   type        = string
-  description = "Azure service principal tenant id for terraform auth"
+  description = "(Required) The name of the Azure Databricks Workspace to deploy"
 }
 
-variable "workspace_name" {
-  type        = string
-  description = "Name of Databricks workspace"
-}
-
-variable "vnet_name" {
-  type        = string
-  description = "Name of existing virtual network into which Databricks will be deployed"
-}
-
-variable "private_subnet_name" {
-  type        = string
-  description = "Name of the private subnet"
-}
-
-variable "public_subnet_name" {
-  type        = string
-  description = "Name of the public subnet"
-}
-
-variable "public_subnet_address_prefix" {
+variable "private_subnet_address_prefixes" {
   type        = list(string)
-  description = "CIDR prefix of the public subnet"
+  description = "(Optional) The address prefix(es) for the Databricks private subnet"
+  default     = ["10.2.1.128/26"]
 }
 
-variable "private_subnet_address_prefix" {
+variable "public_subnet_address_prefixes" {
   type        = list(string)
-  description = "CIDR prefix of the public subnet"
+  description = "(Optional) The address prefix(es) for the Databricks public subnet"
+  default     = ["10.2.1.64/26"]
 }
 
-variable "storage_account_name" {
-  type        = string
-  description = "VPCX storage account name (to be mounted for cluster logs)"
-}
-
-variable "business_unit" {
-  type        = string
-  description = "Name of the business unit that will use the Databricks Workspace. Used in tagging cluster policies"
-}
-
-variable "routes" {
-  type        = map(any)
-  description = <<EOT
-  (Required) Map of route table entries.
-  For example:
-  {
-    "databricks-control-plane-route" = { address_prefix = "52.239.169.196/32", next_hop_type = "VnetLocal" },
-    "databricks-artifact-blob-route" = { address_prefix = "52.239.169.164/32", next_hop_type = "Internet" }
-  }
-  EOT
-}
-
-variable "firewall_routes" {
-  type        = map(any)
-  description = "(Required) Map of firewall route table entries. (Defaults are for EastUS)"
-  default = {
-    "default-route" = "0.0.0.0/0",
-    "adb-webapp1"   = "40.70.58.221/32",
-    "adb-webapp2"   = "20.42.4.209/32",
-    "adb-webapp3"   = "20.42.4.211/32",
-  }
-}
-
-variable "firewall_ip" {
-  type        = string
-  description = "IP for hub vnet firewall"
-  default     = "10.49.0.4"
-}
-
-variable "notification_emails" {
+variable "scc_relay_address_prefixes" {
   type        = list(string)
-  description = "Email addresses to notify in case of backup job failure"
+  description = "(Required) The IP address(es) of the Databricks SCC relay (see https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr#control-plane-nat-and-webapp-ip-addresses)"
 }
 
-variable "kv_name" {
-  type        = string
-  description = "Name of Azure Key Vault"
+variable "webapp_address_prefixes" {
+  type        = list(string)
+  description = "(Required) The IP address(es) of the Databricks regional webapp (see https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr#control-plane-nat-and-webapp-ip-addresses)"
 }
 
-variable "secret_key" {
-  type        = string
-  description = "Name of the secret containing the service principal secret"
+variable "extended_infrastructure_address_prefixes" {
+  type        = list(string)
+  description = "(Required) The IP address(es) of the Databricks regional extended infrastructure (see https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr#control-plane-nat-and-webapp-ip-addresses)"
 }
 
 variable "tags" {
   type        = map(string)
-  description = "Map of tags to attach to Databricks workspace"
+  description = "(Optional) Map of tags to attach to resources"
   default     = {}
 }
