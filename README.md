@@ -4,7 +4,7 @@
 
 This set of terraform templates is designed to get every FS practitioner and devops team started quickly with financial services best practice setup as well as highly valuable FS-focused libraries directly in your environment.
 
-![Financial Services Blueprints](https://raw.githubusercontent.com/databricks/terraform-databricks-lakehouse-blueprints/main/fs_blueprints.jpg)
+![Lakehouse Blueprints](https://raw.githubusercontent.com/databricks/terraform-databricks-lakehouse-blueprints/main/Blueprints.jpg)
 
 ---
 
@@ -26,6 +26,7 @@ What's include in this Terraform package?
 
 * Workspace from scratch (new)
 * Managed VPC - Private Link workspace
+* Unity Catalog integration
 * Managed VPC - Pre-installed FS libraries, Groups to protect PII, Private Link
 
 ### Azure
