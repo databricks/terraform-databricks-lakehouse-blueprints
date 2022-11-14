@@ -5,6 +5,7 @@ resource "databricks_storage_credential" "external" {
     role_arn = aws_iam_role.external_data_access.arn
   }
   comment = "Managed by TF"
+  depends_on = [databricks_metastore_data_access.this]
 }
 
 resource "databricks_grants" "external_creds" {
@@ -14,6 +15,7 @@ resource "databricks_grants" "external_creds" {
     principal  = "Data Engineers"
     privileges = ["CREATE_TABLE"]
   }
+  depends_on = [databricks_group.de_group]
 }
 
 resource "databricks_external_location" "some" {

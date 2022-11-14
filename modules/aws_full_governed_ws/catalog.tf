@@ -6,7 +6,7 @@ resource "databricks_catalog" "sandbox" {
   properties = {
     purpose = "testing"
   }
-  depends_on = [databricks_metastore_assignment.default_metastore]
+  depends_on = [databricks_metastore_data_access.this, databricks_metastore_assignment.default_metastore, databricks_group_member.admin_group_member, databricks_group.de_group, databricks_group.ds_group]
 }
 
 resource "databricks_grants" "sandbox" {
@@ -20,6 +20,7 @@ resource "databricks_grants" "sandbox" {
     principal  = "Data Engineers"
     privileges = ["USAGE"]
   }
+  depends_on = [databricks_group.ds_group, databricks_group.de_group]
 }
 
 resource "databricks_schema" "things" {

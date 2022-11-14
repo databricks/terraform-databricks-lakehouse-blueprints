@@ -1,8 +1,7 @@
-resource "databricks_user" "unity_users" {
+data "databricks_user" "this" {
   provider  = databricks.mws
   for_each  = toset(concat(var.databricks_users, var.databricks_metastore_admins))
   user_name = each.key
-  force     = true
 }
 
 resource "databricks_group" "admin_group" {
@@ -10,16 +9,27 @@ resource "databricks_group" "admin_group" {
   display_name = var.unity_admin_group
 }
 
+
+resource "databricks_group" "de_group" {
+  provider     = databricks.workspace
+  display_name = "Data Engineers"
+}
+
+resource "databricks_group" "ds_group" {
+  provider     = databricks.workspace
+  display_name = "Data Scientists"
+}
+
 resource "databricks_group_member" "admin_group_member" {
   provider  = databricks.mws
-  for_each  = toset(var.databricks_metastore_admins)
+  for_each  = data.databricks_user.this
   group_id  = databricks_group.admin_group.id
-  member_id = databricks_user.unity_users[each.value].id
+  member_id = each.value.id
 }
 
 resource "databricks_user_role" "metastore_admin" {
   provider = databricks.mws
   for_each = toset(var.databricks_metastore_admins)
-  user_id  = databricks_user.unity_users[each.value].id
+  user_id  = data.databricks_user.this[each.value].id
   role     = "account_admin"
 }
