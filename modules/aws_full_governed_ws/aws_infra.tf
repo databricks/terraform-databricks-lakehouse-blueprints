@@ -86,7 +86,7 @@ resource "aws_iam_policy" "sample_data" {
     ]
   })
   tags = merge(local.tags, {
-    Name = "${local.prefix}-unity-catalog IAM policy"
+    Name = "${local.prefix}-sample-data IAM policy"
   })
 }
 
