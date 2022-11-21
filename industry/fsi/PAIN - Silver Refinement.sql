@@ -45,7 +45,7 @@ from payments.default.payment_initiation x
 
 create or replace view silver_payments_initiation
 as 
-select msgid `id`, created_ts, adrline, state, case when is_member("data-science") then base64(aes_encrypt(emailadr, 'key')) else emailadr end emailadr
+select msgid `id`, created_ts, adrline, state, case when is_member("Data Scientists") then base64(aes_encrypt(emailadr, 'key')) else emailadr end emailadr
 from silver_payments_initiation_base
 
 -- COMMAND ----------

@@ -20,7 +20,7 @@ resource "databricks_grants" "sandbox" {
     principal  = "Data Engineers"
     privileges = ["USAGE"]
   }
-  depends_on = [databricks_group.ds_group, databricks_group.de_group]
+  depends_on = [databricks_group.ds_group, databricks_group.de_group, databricks_catalog.sandbox]
 }
 
 resource "databricks_schema" "things" {

@@ -11,12 +11,12 @@ resource "databricks_group" "admin_group" {
 
 
 resource "databricks_group" "de_group" {
-  provider     = databricks.workspace
+  provider     = databricks.mws
   display_name = "Data Engineers"
 }
 
 resource "databricks_group" "ds_group" {
-  provider     = databricks.workspace
+  provider     = databricks.mws
   display_name = "Data Scientists"
 }
 

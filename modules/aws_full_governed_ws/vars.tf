@@ -53,7 +53,3 @@ locals {
 locals  {
   tags = {}
 }
-
-
-variable "allow_ip_list" {default = ["*"]}
-variable "use_ip_access_list" {default = true}

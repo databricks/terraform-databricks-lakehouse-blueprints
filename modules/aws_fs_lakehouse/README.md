@@ -5,20 +5,6 @@ page_title: "Create Resources in Existing Databricks Workspace and Configure Sto
 
 This module uses the following input variables. Please all variables here in a terraform.tfvars file (outside the github project) and reference it using `terraform apply -var-file="<location for tfvars file>/terraform.tfvars"`.
 
-variable "crossaccount_role_name" {
-  type        = string
-  description = "Role that you've specified on https://accounts.cloud.databricks.com/#aws"
-}
-
-variable "workspace_url" {
-
-}
-
-
-variable "allow_ip_list" { type= list(string)}
-
-
-
 ## Input Variables
 
 - `databricks_account_id`: The ID per Databricks AWS account used for accessing account management APIs. After the AWS E2 account is created, this is available after logging into [https://accounts.cloud.databricks.com](https://accounts.cloud.databricks.com).
