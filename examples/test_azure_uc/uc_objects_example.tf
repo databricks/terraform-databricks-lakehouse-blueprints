@@ -5,7 +5,6 @@ resource "databricks_catalog" "sandbox" {
   properties = {
     purpose = "testing"
   }
-  depends_on = [databricks_metastore_assignment.this]
 }
 
 resource "databricks_grants" "sandbox" {

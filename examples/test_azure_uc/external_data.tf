@@ -39,9 +39,6 @@ resource "databricks_storage_credential" "external" {
     access_connector_id = azapi_resource.ext_access_connector.id
   }
   comment = "Managed by TF"
-  depends_on = [
-    databricks_metastore_assignment.this
-  ]
 }
 
 resource "databricks_grants" "external_creds" {
@@ -60,9 +57,6 @@ resource "databricks_external_location" "some" {
 
   credential_name = databricks_storage_credential.external.id
   comment         = "Managed by TF"
-  depends_on = [
-    databricks_metastore_assignment.this
-  ]
 }
 
 resource "databricks_grants" "some" {

@@ -43,5 +43,5 @@ module "unity_catalog" {
   source = "../../modules/azure_uc"
 
   resource_group_id       = azurerm_resource_group.this.id
-  workspaces_to_associate = [azurerm_databricks_workspace.this.id]
+  workspaces_to_associate = [azurerm_databricks_workspace.this.workspace_id]
 }
