@@ -1,4 +1,10 @@
-variable "databricks_resource_id" {
-  description = "The Azure resource ID for the databricks workspace deployment. Ex: /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Databricks/workspaces/workspace1"
+variable "resource_group_id" {
+  type        = string
+  description = "(Required) Resource ID of the pre-existing Resource Group that will house Unity Catalog"
 }
 
+variable "workspaces_to_associate" {
+  type        = list(string)
+  description = "(Optional) List of Databricks Workspace IDs to associate with Unity Catalog"
+  default     = []
+}

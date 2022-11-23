@@ -42,29 +42,6 @@ locals {
 module "unity_catalog" {
   source = "../../modules/azure_uc"
 
-  resource_group_id = azurerm_resource_group.this.id
+  resource_group_id       = azurerm_resource_group.this.id
+  workspaces_to_associate = [azurerm_databricks_workspace.this.id]
 }
-
-resource "databricks_metastore_assignment" "this" {
-  workspace_id         = azurerm_databricks_workspace.this.id
-  metastore_id         = module.unity_catalog.databricks_metastore_id
-  default_catalog_name = "hive_metastore"
-}
-
-# TODO: fix the db workspace module so that it only takes in a vnet id, then derives name/location etc. like in 'locals' below 
-# module "databricks_workspace" {
-#   source  = "databricks/lakehouse-blueprints/databricks//modules/azure_vnet_injected_databricks_workspace"
-#   version = "0.0.5"
-
-#   workspace_name                  = format("%s-databricks", local.prefix)
-#   databricks_resource_group_name  = azurerm_resource_group.this.name
-#   location                        = azurerm_resource_group.this.location
-#   vnet_id                         = azurerm_virtual_network.this.id
-#   vnet_name                       = azurerm_virtual_network.this.name
-#   nsg_id                          = module.spoke_vnet.nsg_id
-#   route_table_id                  = module.spoke_vnet.route_table_id
-#   private_subnet_address_prefixes = var.private_subnet_address_prefixes
-#   public_subnet_address_prefixes  = var.public_subnet_address_prefixes
-#   tags                            = azurerm_resource_group.tags
-# }
-

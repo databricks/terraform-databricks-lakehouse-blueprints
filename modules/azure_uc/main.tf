@@ -1,12 +1,9 @@
 locals {
-  resource_regex            = "(?i)subscriptions/(.+)/resourceGroups/(.+)/providers/Microsoft.Databricks/workspaces/(.+)"
-  subscription_id           = regex(local.resource_regex, var.databricks_resource_id)[0]
-  resource_group            = regex(local.resource_regex, var.databricks_resource_id)[1]
-  databricks_workspace_name = regex(local.resource_regex, var.databricks_resource_id)[2]
-  tenant_id                 = data.azurerm_client_config.current.tenant_id
-  databricks_workspace_host = data.azurerm_databricks_workspace.this.workspace_url
-  databricks_workspace_id   = data.azurerm_databricks_workspace.this.workspace_id
-  prefix                    = replace(replace(lower(data.azurerm_resource_group.this.name), "rg", ""), "-", "")
+  resource_regex  = "/subscriptions/(.+)/resourceGroups/(.+)"
+  subscription_id = regex(local.resource_regex, var.resource_group_id)[0]
+  resource_group  = regex(local.resource_regex, var.resource_group_id)[1]
+  tenant_id       = data.azurerm_client_config.current.tenant_id
+  prefix          = replace(replace(lower(data.azurerm_resource_group.this.name), "rg", ""), "-", "")
 }
 
 data "azurerm_resource_group" "this" {
@@ -16,16 +13,12 @@ data "azurerm_resource_group" "this" {
 data "azurerm_client_config" "current" {
 }
 
-data "azurerm_databricks_workspace" "this" {
-  name                = local.databricks_workspace_name
-  resource_group_name = local.resource_group
-}
-
 resource "azapi_resource" "access_connector" {
-  type      = "Microsoft.Databricks/accessConnectors@2022-04-01-preview"
-  name      = "${local.prefix}-databricks-mi"
-  location  = data.azurerm_resource_group.this.location
-  parent_id = data.azurerm_resource_group.this.id
+  type                      = "Microsoft.Databricks/accessConnectors@2022-04-01-preview"
+  name                      = "${local.prefix}-databricks-mi"
+  location                  = data.azurerm_resource_group.this.location
+  parent_id                 = data.azurerm_resource_group.this.id
+  schema_validation_enabled = false
   identity {
     type = "SystemAssigned"
   }
@@ -75,8 +68,8 @@ resource "databricks_metastore_data_access" "first" {
 }
 
 resource "databricks_metastore_assignment" "this" {
-  workspace_id         = local.databricks_workspace_id
-  metastore_id         = databricks_metastore.this.id
-  default_catalog_name = "hive_metastore"
-}
+  for_each = toset(var.workspaces_to_associate)
 
+  workspace_id = each.key
+  metastore_id = databricks_metastore.this.id
+}

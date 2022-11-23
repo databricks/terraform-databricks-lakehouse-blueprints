@@ -7,6 +7,6 @@ provider "azurerm" {
   features {}
 }
 
-provider "databricks" {
-  host = local.databricks_workspace_host
-}
+# provider "databricks" {
+#   host = local.databricks_workspace_host
+# }
