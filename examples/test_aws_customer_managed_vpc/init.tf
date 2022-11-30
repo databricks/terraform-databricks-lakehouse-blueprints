@@ -1,8 +1,9 @@
 terraform {
   backend "s3" {
-    bucket  = "databricks-terraform-blueprints2"
-    key     = "test_aws_customer_managed_vpc.tfstate"
-    region  = "us-east-1"
+
+    bucket = "databricks-terraform-blueprints2"
+    key    = "test_aws_customer_managed_vpc.tfstate"
+    region = "us-east-1"
   }
   required_providers {
     databricks = {
@@ -17,7 +18,7 @@ terraform {
 }
 
 provider "aws" {
-  region  = var.region
+  region = var.region
 }
 
 // initialize provider at account level for provisioning workspace with AWS PrivateLink

@@ -16,6 +16,7 @@ variable "databricks_account_password" {
 
 variable "allow_ip_list" {}
 variable "use_ip_access_list" {default = true}
+
 locals {
   region = "us-east-1"
 }

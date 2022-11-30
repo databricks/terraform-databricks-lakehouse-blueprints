@@ -13,6 +13,7 @@ This module uses the following input variables. Please all variables here in a t
 - `crossaccount_role_name` - Cross-account role name used for Databricks deployment
 - `workspace_url` - Workspace URL
 - `allow_ip_list` - List of allowable IPs to access Databricks workspace UI login and REST API
+- `use_ip_access_list`- Boolean to indicate whether to set an IP access list
 
 ```hcl
 module "aws_fs_lakehouse" {
@@ -24,6 +25,7 @@ module "aws_fs_lakehouse" {
   crossaccount_role_name = # see description above
   workspace_url = # see description above
   allow_ip_list = # see description above
+  use_ip_access_list = # see description above
   
 }
 ```

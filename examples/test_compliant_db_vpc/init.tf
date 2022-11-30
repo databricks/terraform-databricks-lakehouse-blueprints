@@ -1,8 +1,8 @@
 terraform {
   backend "s3" {
-    bucket  = "databricks-terraform-blueprints2"
-    key     = "test_aws_base.tfstate"
-    region  = "us-east-1"
+    bucket = "databricks-terraform-blueprints2"
+    key    = "test_aws_base.tfstate"
+    region = "us-east-1"
   }
   required_providers {
     databricks = {
@@ -17,5 +17,5 @@ terraform {
 }
 
 provider "aws" {
-  region  = var.region
+  region = var.region
 }
