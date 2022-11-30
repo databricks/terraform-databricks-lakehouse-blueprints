@@ -1,6 +1,6 @@
 data "aws_subnet" "ws_vpc_subnets" {
-  for_each = toset(var.subnet_ids)
-  id       = each.value
+  count = length(var.subnet_ids)
+  id       = var.subnet_ids[count.index]
 }
 
 locals {

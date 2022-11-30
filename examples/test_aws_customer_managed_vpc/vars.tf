@@ -25,6 +25,7 @@ variable "subnet_ids" {
 variable "security_group_id" {}
 
 variable "cross_account_arn" {}
+variable "use_ip_access_list" {}
 
 locals {
   prefix = "private-link-ws"

@@ -1,9 +1,12 @@
 data "databricks_spark_version" "latest" {
   provider = databricks.workspace
+  depends_on = [module.aws_customer_managed_vpc]
 }
 data "databricks_node_type" "smallest" {
   provider   = databricks.workspace
   local_disk = true
+  depends_on = [module.aws_customer_managed_vpc]
+
 }
 
 resource "databricks_cluster" "unity_sql" {
@@ -18,4 +21,6 @@ resource "databricks_cluster" "unity_sql" {
     availability = "SPOT"
   }
   data_security_mode = "USER_ISOLATION"
+  custom_tags        = { "clusterSource" = "lakehouse-blueprints" }
+  depends_on = [module.aws_customer_managed_vpc.workspace_url, module.aws_full_governed_ws.databricks_external_location]
 }

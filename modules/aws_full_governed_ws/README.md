@@ -14,7 +14,7 @@ This module uses the following input variables. Please all variables here in a t
 - `crossaccount_role_name` - Cross-account role name used for Databricks deployment
 - `databricks_workspace_url` - Workspace URL
 - `region` - region in which all AWS resources are deployed
-- `databricks_workspace_ids` - List of all numeric workspace IDs which should be linked to the created UC metastore
+- `workspaces_to_associate` - List of all numeric workspace IDs which should be associated to the created UC metastore
 - `databricks_users` - List of all Databricks users which should be provisioned as part of the quickstart. This is mostly instructive and the best practice should be to use SCIM to sync users to the Databricks workspace - terraform can be used for the assignment (assuming users already exist)
 - `databricks_metastore_admins` - List of all metastore admins to be added to the Databricks group
 - `unity_admin_group` - Name of the group to be used as the admins for metastore, catalog, schema, and databases. This should be restricted to a small group of users with to administrate UC APIs.

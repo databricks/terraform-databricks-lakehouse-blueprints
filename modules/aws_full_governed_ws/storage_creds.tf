@@ -8,29 +8,10 @@ resource "databricks_storage_credential" "external" {
   depends_on = [databricks_metastore_data_access.this]
 }
 
-resource "databricks_grants" "external_creds" {
-  provider           = databricks.workspace
-  storage_credential = databricks_storage_credential.external.id
-  grant {
-    principal  = "Data Engineers"
-    privileges = ["CREATE_TABLE"]
-  }
-  depends_on = [databricks_group.de_group]
-}
-
 resource "databricks_external_location" "some" {
   provider        = databricks.workspace
   name            = "external"
   url             = "s3://${aws_s3_bucket.external.id}/some"
   credential_name = databricks_storage_credential.external.id
   comment         = "Managed by TF"
-}
-
-resource "databricks_grants" "some" {
-  provider          = databricks.workspace
-  external_location = databricks_external_location.some.id
-  grant {
-    principal  = "Data Engineers"
-    privileges = ["CREATE_TABLE", "READ_FILES"]
-  }
 }

@@ -1,6 +1,6 @@
 resource "databricks_workspace_conf" "this" {
   custom_config = {
-    "enableIpAccessLists" : false
+    "enableIpAccessLists" : var.use_ip_access_list
   }
 }
 

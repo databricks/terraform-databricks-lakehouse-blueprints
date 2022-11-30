@@ -5,4 +5,5 @@ module "aws_fs_lakehouse" {
   databricks_account_password = var.databricks_account_password
   crossaccount_role_name           = var.crossaccount_role_name
   allow_ip_list = var.allow_ip_list
+  use_ip_access_list = var.use_ip_access_list
 }
