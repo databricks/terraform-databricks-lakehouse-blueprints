@@ -1,14 +1,10 @@
-resource "azapi_resource" "ext_access_connector" {
-  type      = "Microsoft.Databricks/accessConnectors@2022-04-01-preview"
-  name      = "ext-databricks-mi"
-  location  = azurerm_resource_group.this.location
-  parent_id = azurerm_resource_group.this.id
+resource "azurerm_databricks_access_connector" "ext_access_connector" {
+  name                = "ext-databricks-mi"
+  resource_group_name = data.azurerm_resource_group.this.name
+  location            = data.azurerm_resource_group.this.location
   identity {
     type = "SystemAssigned"
   }
-  body = jsonencode({
-    properties = {}
-  })
 }
 
 resource "azurerm_storage_account" "ext_storage" {
@@ -30,13 +26,13 @@ resource "azurerm_storage_container" "ext_storage" {
 resource "azurerm_role_assignment" "ext_storage" {
   scope                = azurerm_storage_account.ext_storage.id
   role_definition_name = "Storage Blob Data Contributor"
-  principal_id         = azapi_resource.ext_access_connector.identity[0].principal_id
+  principal_id         = azurerm_databricks_access_connector.ext_access_connector.identity[0].principal_id
 }
 
 resource "databricks_storage_credential" "external" {
-  name = azapi_resource.ext_access_connector.name
+  name = azurerm_databricks_access_connector.ext_access_connector.name
   azure_managed_identity {
-    access_connector_id = azapi_resource.ext_access_connector.id
+    access_connector_id = azurerm_databricks_access_connector.ext_access_connector.id
   }
   comment = "Managed by TF"
 }

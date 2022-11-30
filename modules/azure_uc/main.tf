@@ -13,18 +13,13 @@ data "azurerm_resource_group" "this" {
 data "azurerm_client_config" "current" {
 }
 
-resource "azapi_resource" "access_connector" {
-  type                      = "Microsoft.Databricks/accessConnectors@2022-04-01-preview"
-  name                      = "${local.prefix}-databricks-mi"
-  location                  = data.azurerm_resource_group.this.location
-  parent_id                 = data.azurerm_resource_group.this.id
-  schema_validation_enabled = false
+resource "azurerm_databricks_access_connector" "unity" {
+  name                = "${local.prefix}-databricks-mi"
+  resource_group_name = data.azurerm_resource_group.this.name
+  location            = data.azurerm_resource_group.this.location
   identity {
     type = "SystemAssigned"
   }
-  body = jsonencode({
-    properties = {}
-  })
 }
 
 resource "azurerm_storage_account" "unity_catalog" {
@@ -46,7 +41,7 @@ resource "azurerm_storage_container" "unity_catalog" {
 resource "azurerm_role_assignment" "example" {
   scope                = azurerm_storage_account.unity_catalog.id
   role_definition_name = "Storage Blob Data Contributor"
-  principal_id         = azapi_resource.access_connector.identity[0].principal_id
+  principal_id         = azurerm_databricks_access_connector.unity.identity[0].principal_id
 }
 
 resource "databricks_metastore" "this" {
@@ -61,7 +56,7 @@ resource "databricks_metastore_data_access" "first" {
   metastore_id = databricks_metastore.this.id
   name         = "the-keys"
   azure_managed_identity {
-    access_connector_id = azapi_resource.access_connector.id
+    access_connector_id = azurerm_databricks_access_connector.unity.id
   }
 
   is_default = true
