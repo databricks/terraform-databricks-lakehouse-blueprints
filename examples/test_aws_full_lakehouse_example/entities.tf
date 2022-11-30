@@ -40,10 +40,3 @@ resource "databricks_group_member" "admin_group_member" {
   group_id  = databricks_group.admin_group.id
   member_id = each.value.id
 }
-
-resource "databricks_user_role" "metastore_admin" {
-  provider = databricks.mws
-  for_each = toset(var.databricks_metastore_admins)
-  user_id  = data.databricks_user.this[each.value].id
-  role     = "account_admin"
-}

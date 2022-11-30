@@ -43,6 +43,8 @@ variable "subnet_ids" {
 }
 variable "security_group_id" {}
 
+variable "databricks_account_owner" {}
+
 locals {
   prefix = "fs-lakehouse"
 }

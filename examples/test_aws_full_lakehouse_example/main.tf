@@ -1,3 +1,5 @@
+
+// Create Databricks-compliant VPC
 module "aws_base" {
   source                      = "../../modules/aws_base/"
   cidr_block                  = var.cidr_block
@@ -12,7 +14,7 @@ data "aws_vpc" "prod" {
   id = module.aws_base.vpc_id
 }
 
-
+// Deploy Workspace Using Above-created VPC subnets and infrastructure
 module "aws_customer_managed_vpc" {
   source                      = "../../modules/aws_customer_managed_vpc/"
   databricks_account_id       = var.databricks_account_id
@@ -33,7 +35,7 @@ module "aws_customer_managed_vpc" {
   depends_on = [module.aws_base]
 }
 
-
+// Enable UC for the workspace aboves
 module "aws_full_governed_ws" {
   source                      = "../../modules/aws_full_governed_ws/"
   databricks_account_id       = var.databricks_account_id
@@ -45,6 +47,7 @@ module "aws_full_governed_ws" {
 }
 
 
+// Create jobs, install libraries, and quickstarts that are industry-specific
 module "aws_fs_lakehouse" {
   source                      = "../../modules/aws_fs_lakehouse/"
   workspace_url               = module.aws_customer_managed_vpc.workspace_url
