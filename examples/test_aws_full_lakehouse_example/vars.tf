@@ -13,12 +13,12 @@ variable "workspaces_to_associate" {}
 variable "databricks_metastore_admins" {}
 variable "unity_admin_group" {}
 
-variable "allow_ip_list" {default = ["0.0.0.0/0"]}
+variable "allow_ip_list" { default = ["0.0.0.0/0"] }
 
-variable "use_ip_access_list" {default = true}
+variable "use_ip_access_list" { default = true }
 
 variable "region" {
-  default="us-east-1"
+  default = "us-east-1"
 }
 
 variable "tags" {

@@ -4,7 +4,7 @@ resource "databricks_storage_credential" "external" {
   aws_iam_role {
     role_arn = aws_iam_role.external_data_access.arn
   }
-  comment = "Managed by TF"
+  comment    = "Managed by TF"
   depends_on = [databricks_metastore_data_access.this]
 }
 

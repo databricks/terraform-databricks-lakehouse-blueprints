@@ -10,7 +10,7 @@ variable "workspaces_to_associate" {
   e.g. ["111111111", "222222222"]
   EOT
   type        = list(string)
-  default = []
+  default     = []
 }
 
 variable "region" {
@@ -27,6 +27,6 @@ locals {
   prefix = "demo${random_string.naming.result}"
 }
 
-locals  {
+locals {
   tags = {}
 }

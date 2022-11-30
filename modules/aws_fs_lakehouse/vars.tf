@@ -12,9 +12,9 @@ variable "databricks_account_username" {
 variable "databricks_account_password" {
 }
 
-variable "allow_ip_list" { type= list(string)}
+variable "allow_ip_list" { type = list(string) }
 
-variable "use_ip_access_list" {type = bool}
+variable "use_ip_access_list" { type = bool }
 
 locals {
   region = "us-east-1"

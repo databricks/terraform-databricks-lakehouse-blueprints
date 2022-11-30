@@ -316,15 +316,15 @@ resource "databricks_job" "this" {
   name = "FS Blueprints Quickstart Job (${data.databricks_current_user.me.alphanumeric})"
 
   new_cluster {
-     spark_version           = data.databricks_spark_version.latest.id
-  node_type_id            = data.databricks_node_type.smallest.id
-  enable_elastic_disk     = false
-  num_workers             = 1
-  aws_attributes {
-    availability = "SPOT"
-  }
-  data_security_mode = "SINGLE_USER"
-  custom_tags        = { "clusterSource" = "lakehouse-blueprints" }
+    spark_version       = data.databricks_spark_version.latest.id
+    node_type_id        = data.databricks_node_type.smallest.id
+    enable_elastic_disk = false
+    num_workers         = 1
+    aws_attributes {
+      availability = "SPOT"
+    }
+    data_security_mode = "SINGLE_USER"
+    custom_tags        = { "clusterSource" = "lakehouse-blueprints" }
   }
 
   library {

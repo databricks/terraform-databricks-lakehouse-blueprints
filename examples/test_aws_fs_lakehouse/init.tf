@@ -4,7 +4,7 @@ terraform {
     bucket = "databricks-terraform-blueprints2"
     key    = "test_aws_fs_lakehouse.tfstate"
     region = "us-east-1"
- }
+  }
   required_providers {
     databricks = {
       source  = "databricks/databricks"

@@ -14,7 +14,7 @@ variable "databricks_metastore_admins" {}
 variable "unity_admin_group" {}
 
 variable "region" {
-  default="us-east-1"
+  default = "us-east-1"
 }
 
 locals {
