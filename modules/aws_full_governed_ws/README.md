@@ -2,9 +2,9 @@
 page_title: "Create Cloud Resources for Unity Catalog, Assign Metastores, and Create Sample Catalog"
 ---
 
+# Create Cloud Resources for Unity Catalog, Assign Metastores, and Create Sample Catalog
 
 This module uses the following input variables. Please all variables here in a terraform.tfvars file (outside the github project) and reference it using `terraform apply -var-file="<location for tfvars file>/terraform.tfvars"`.
-
 
 ## Input Variables
 
@@ -18,6 +18,7 @@ This module uses the following input variables. Please all variables here in a t
 - `databricks_users` - List of all Databricks users which should be provisioned as part of the quickstart. This is mostly instructive and the best practice should be to use SCIM to sync users to the Databricks workspace - terraform can be used for the assignment (assuming users already exist)
 - `databricks_metastore_admins` - List of all metastore admins to be added to the Databricks group
 - `unity_admin_group` - Name of the group to be used as the admins for metastore, catalog, schema, and databases. This should be restricted to a small group of users with to administrate UC APIs.
+
 ```hcl
 module "aws_full_governed_ws" {
   source = "databricks/aws_full_governed_ws/"

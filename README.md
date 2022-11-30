@@ -12,15 +12,15 @@ This set of terraform templates is designed to allow every industry practitioner
 
 What's include in this sequence of Terraform modules?
 
-#### AWS | Azure
+### AWS | Azure
 
-There are 4 main modules which can be composed together. (1-4). There is also a full end-to-end example of a workspace deployment with governance and industry quickstarts included. See the `test_aws_full_lakehouse_example` for this version. 
+There are 4 main modules which can be composed together. (1-4). There is also a full end-to-end example of a workspace deployment with governance and industry quickstarts included. See the `test_aws_full_lakehouse_example` for this version.
 
 1. Creation of Databricks-compliant VPC in `aws_base` `azure_spoke_vnet` (AWS | Azure)
 2. Platform Security Built in to Workspace deployment (Private Link, VPC endpoints, and secure connectivity) (AWS | Azure)
 3. Unity Catalog Installation (AWS | Azure)
 4. Industry Quickstarts with Sample Job and Pre-installed Libraries for Time Series, Common Domain Models
-5. Full End-to-End example (AWS) for Composition of all modules above (see below). Similarly, this works for Azure modules. 
+5. Full End-to-End example (AWS) for Composition of all modules above (see below). Similarly, this works for Azure modules.
 
 ```hcl
 module "aws_base" {

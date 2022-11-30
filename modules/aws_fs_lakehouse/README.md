@@ -2,6 +2,7 @@
 page_title: "Create Resources in Existing Databricks Workspace and Configure Storage, Jobs, IP Access Lists, and Library Installation"
 ---
 
+# Create Resources in Existing Databricks Workspace and Configure Storage, Jobs, IP Access Lists, and Library Installation
 
 This module uses the following input variables. Please all variables here in a terraform.tfvars file (outside the github project) and reference it using `terraform apply -var-file="<location for tfvars file>/terraform.tfvars"`.
 

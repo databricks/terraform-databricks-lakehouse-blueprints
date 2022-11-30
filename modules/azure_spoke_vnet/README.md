@@ -2,6 +2,8 @@
 page_title: "Provisioning Azure Spoke VNET as per Data Exfiltration Protection with Terraform"
 ---
 
+# Provisioning Azure Spoke VNET as per Data Exfiltration Protection with Terraform
+
 [Reference documentation and blog](https://databricks.com/blog/2020/03/27/data-exfiltration-protection-with-azure-databricks.html)
 
 This guide uses the following variables in configurations:
@@ -15,10 +17,10 @@ This guide uses the following variables in configurations:
 - `spoke_resource_group_name` - (Required) The name of the Resource Group to create
 - `project_name` - (Required) The name of the project associated with the infrastructure to be managed by Terraform
 - `spoke_vnet_address_space` - (Required) The address space for the spoke Virtual Network
-- `scc_relay_address_prefixes` - (Required) The IP address(es) of the Databricks SCC relay (see https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr#control-plane-nat-and-webapp-ip-addresses)
+- `scc_relay_address_prefixes` - (Required) The IP address(es) of the Databricks SCC relay (see <https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr#control-plane-nat-and-webapp-ip-addresses>)
 - `privatelink_subnet_address_prefixes` - (Required) The address prefix(es) for the PrivateLink subnet
 - `webapp_and_infra_routes` - (Required) Map of regional webapp and ext-infra CIDRs.
-   Check https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr#ip-addresses for more info
+   Check <https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr#ip-addresses> for more info
    Ex., for eastus:
    {
      "webapp1" : "40.70.58.221/32",
