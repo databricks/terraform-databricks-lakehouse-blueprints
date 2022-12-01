@@ -22,5 +22,5 @@ resource "databricks_cluster" "unity_sql" {
   }
   data_security_mode = "USER_ISOLATION"
   custom_tags        = { "clusterSource" = "lakehouse-blueprints" }
-  depends_on         = [module.aws_customer_managed_vpc.workspace_url, module.aws_full_governed_ws.databricks_external_location]
+  depends_on         = [module.aws_customer_managed_vpc.workspace_url, module.aws_uc.databricks_external_location]
 }

@@ -1,6 +1,6 @@
 resource "databricks_catalog" "sandbox" {
   provider     = databricks.workspace
-  metastore_id = module.aws_full_governed_ws.databricks_metastore_id
+  metastore_id = module.aws_uc.databricks_metastore_id
   name         = "sandbox"
   comment      = "this catalog is managed by terraform"
   properties = {

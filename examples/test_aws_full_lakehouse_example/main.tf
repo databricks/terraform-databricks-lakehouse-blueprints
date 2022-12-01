@@ -36,8 +36,8 @@ module "aws_customer_managed_vpc" {
 }
 
 // Enable UC for the workspace aboves
-module "aws_full_governed_ws" {
-  source                      = "../../modules/aws_full_governed_ws/"
+module "aws_uc" {
+  source                      = "../../modules/aws_uc/"
   databricks_account_id       = var.databricks_account_id
   databricks_account_username = var.databricks_account_username
   databricks_account_password = var.databricks_account_password
@@ -61,5 +61,5 @@ module "aws_fs_lakehouse" {
     databricks = databricks.workspace
   }
 
-  depends_on = [module.aws_full_governed_ws]
+  depends_on = [module.aws_uc]
 }

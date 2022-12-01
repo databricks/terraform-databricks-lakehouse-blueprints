@@ -4,7 +4,7 @@
 
 This set of terraform templates is designed to allow every industry practitioner and devops team started quickly with the canonical Regulated Industries security best practices and governance setup as well as highly valuable industry libraries and quickstarts directly in your environment.
 
-![Lakehouse Blueprints](https://raw.githubusercontent.com/databricks/terraform-databricks-lakehouse-blueprints/main/blueprints.png)
+![Lakehouse Blueprints](https://raw.githubusercontent.com/databricks/terraform-databricks-lakehouse-blueprints/main/Blueprints.png)
 
 ---
 
@@ -17,10 +17,10 @@ What's include in this sequence of Terraform modules?
 There are 4 main modules which can be composed together. (1-4). There is also a full end-to-end example of a workspace deployment with governance and industry quickstarts included. See the `test_aws_full_lakehouse_example` for this version.
 
 1. Creation of Databricks-compliant VPC in `aws_base` or `azure_spoke_vnet` (AWS | Azure)
-2. Platform Security Built in to Workspace deployment (Private Link, VPC endpoints, and secure connectivity) (AWS | Azure)
-3. Unity Catalog Installation (AWS | Azure)
-4. Industry Quickstarts with Sample Job and Pre-installed Libraries for Time Series, Common Domain Models
-5. Full End-to-End example on AWS for Composition of all modules above (see below). This can be similarly applied for Azure modules.
+2. Platform Security Built in to Workspace deployment in `aws_customer_managed_vpc` and `azure_vnet_injected_databricks_workspace` module (Private Link, VPC endpoints, and secure connectivity) (AWS | Azure)
+3. Unity Catalog Installation in `aws_uc` and `azure_uc` module (AWS | Azure)
+4. Industry Quickstarts with Sample Job and Pre-installed Libraries for Time Series, Common Domain Models (see `aws_fs_lakehouse` module)
+5. Full End-to-End example on AWS for Composition of all modules above (see below). This composed example is available the examples folder (test_full_aws_lakehouse_example) This can be similarly applied for Azure modules.
 
 ```hcl
 module "aws_base" {
@@ -59,8 +59,8 @@ module "aws_customer_managed_vpc" {
 }
 
 
-module "aws_full_governed_ws" {
-  source                      = "../../modules/aws_full_governed_ws/"
+module "aws_uc" {
+  source                      = "../../modules/aws_uc/"
   databricks_account_id       = var.databricks_account_id
   databricks_account_username = var.databricks_account_username
   databricks_account_password = var.databricks_account_password
@@ -83,7 +83,7 @@ module "aws_fs_lakehouse" {
     databricks = databricks.workspace
   }
 
-  depends_on = [module.aws_full_governed_ws]
+  depends_on = [module.aws_uc]
 }
 ```
 

@@ -20,8 +20,8 @@ This module uses the following input variables. Please all variables here in a t
 - `unity_admin_group` - Name of the group to be used as the admins for metastore, catalog, schema, and databases. This should be restricted to a small group of users with to administrate UC APIs.
 
 ```hcl
-module "aws_full_governed_ws" {
-  source = "databricks/aws_full_governed_ws/"
+module "aws_uc" {
+  source = "databricks/aws_uc/"
   
   databricks_account_id = # see description above
   databricks_account_username = # see description above

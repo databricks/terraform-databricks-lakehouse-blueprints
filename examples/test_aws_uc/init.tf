@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket = "databricks-terraform-blueprints2"
-    key    = "test_aws_full_governed_ws.tfstate"
+    key    = "test_aws_uc.tfstate"
     region = "us-east-1"
   }
   required_providers {
