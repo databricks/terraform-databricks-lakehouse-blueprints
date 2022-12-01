@@ -63,8 +63,8 @@ resource "databricks_metastore_data_access" "first" {
 }
 
 resource "databricks_metastore_assignment" "this" {
-  for_each = toset(var.workspaces_to_associate)
+  count = length(var.workspaces_to_associate)
 
-  workspace_id = each.key
+  workspace_id = var.workspaces_to_associate[count.index]
   metastore_id = databricks_metastore.this.id
 }
