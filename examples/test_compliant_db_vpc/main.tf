@@ -1,5 +1,6 @@
 module "aws_base" {
-  source                      = "../../modules/aws_base/"
+  source = "../../modules/aws_base/"
+
   cidr_block                  = var.cidr_block
   tags                        = var.tags
   region                      = var.region

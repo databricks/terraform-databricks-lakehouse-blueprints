@@ -1,4 +1,10 @@
-data "databricks_current_user" "me" {}
+data "databricks_current_user" "me" {
+}
+
+data "databricks_spark_version" "latest" {}
+data "databricks_node_type" "smallest" {
+  local_disk = true
+}
 
 resource "databricks_notebook" "this" {
   path     = "${data.databricks_current_user.me.home}/Terraform"
@@ -310,23 +316,15 @@ resource "databricks_job" "this" {
   name = "FS Blueprints Quickstart Job (${data.databricks_current_user.me.alphanumeric})"
 
   new_cluster {
-    num_workers   = 1
-    spark_version = data.databricks_spark_version.latest.id
-    node_type_id  = data.databricks_node_type.smallest.id
-
-    spark_conf = {
-      "spark.databricks.repl.allowedLanguages" : "python,sql",
-    }
-
-
-
+    spark_version       = data.databricks_spark_version.latest.id
+    node_type_id        = data.databricks_node_type.smallest.id
+    enable_elastic_disk = false
+    num_workers         = 1
     aws_attributes {
-      instance_profile_arn   = databricks_instance_profile.shared.id
-      availability           = "SPOT"
-      zone_id                = "us-east-1"
-      first_on_demand        = 1
-      spot_bid_price_percent = 100
+      availability = "SPOT"
     }
+    data_security_mode = "SINGLE_USER"
+    custom_tags        = { "clusterSource" = "lakehouse-blueprints" }
   }
 
   library {
@@ -344,7 +342,6 @@ resource "databricks_job" "this" {
   notebook_task {
     notebook_path = databricks_notebook.this.path
   }
-  depends_on = [databricks_instance_profile.shared]
 }
 
 output "notebook_url" {

@@ -2,22 +2,9 @@
 page_title: "Create Resources in Existing Databricks Workspace and Configure Storage, Jobs, IP Access Lists, and Library Installation"
 ---
 
+# Create Resources in Existing Databricks Workspace and Configure Storage, Jobs, IP Access Lists, and Library Installation
 
 This module uses the following input variables. Please all variables here in a terraform.tfvars file (outside the github project) and reference it using `terraform apply -var-file="<location for tfvars file>/terraform.tfvars"`.
-
-variable "crossaccount_role_name" {
-  type        = string
-  description = "Role that you've specified on https://accounts.cloud.databricks.com/#aws"
-}
-
-variable "workspace_url" {
-
-}
-
-
-variable "allow_ip_list" { type= list(string)}
-
-
 
 ## Input Variables
 
@@ -27,6 +14,7 @@ variable "allow_ip_list" { type= list(string)}
 - `crossaccount_role_name` - Cross-account role name used for Databricks deployment
 - `workspace_url` - Workspace URL
 - `allow_ip_list` - List of allowable IPs to access Databricks workspace UI login and REST API
+- `use_ip_access_list`- Boolean to indicate whether to set an IP access list
 
 ```hcl
 module "aws_fs_lakehouse" {
@@ -38,6 +26,7 @@ module "aws_fs_lakehouse" {
   crossaccount_role_name = # see description above
   workspace_url = # see description above
   allow_ip_list = # see description above
+  use_ip_access_list = # see description above
   
 }
 ```
@@ -57,11 +46,11 @@ terraform {
   required_providers {
     databricks = {
       source  = "databricks/databricks"
-      version = "~>1.0.0"
+      version = "~>1.6.5"
     }
     aws = {
       source  = "hashicorp/aws"
-      version = "~>4.22.0"
+      version = "~>4.35.0"
     }
   }
 }

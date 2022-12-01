@@ -1,0 +1,112 @@
+{
+    "job_id": 587036852304205,
+    "creator_user_name": "ricardo.portilla@databricks.com",
+    "run_as_user_name": "ricardo.portilla@databricks.com",
+    "run_as_owner": true,
+    "settings": {
+        "name": "Build_Payments_Lakehouse",
+        "email_notifications": {
+            "no_alert_for_skipped_runs": false
+        },
+        "timeout_seconds": 0,
+        "max_concurrent_runs": 1,
+        "tasks": [
+            {
+                "task_key": "Silver_Clearing_Enrichment",
+                "depends_on": [
+                    {
+                        "task_key": "Bronze_Save_Payments_To_ISO20022"
+                    }
+                ],
+                "notebook_task": {
+                    "notebook_path": "/Repos/ricardo.portilla@databricks.com/field-demo/demo-FSI/Usecase: Payment Lakehouse/PACS - Silver Refinement",
+                    "source": "WORKSPACE"
+                },
+                "existing_cluster_id": "1028-040603-oqzma3yp",
+                "timeout_seconds": 0,
+                "email_notifications": {}
+            },
+            {
+                "task_key": "Bronze_Save_Payments_To_ISO20022",
+                "notebook_task": {
+                    "notebook_path": "/Repos/ricardo.portilla@databricks.com/field-demo/demo-FSI/Usecase: Payment Lakehouse/Publish ISO 20022 to Lakehouse",
+                    "source": "WORKSPACE"
+                },
+                "job_cluster_key": "Shared_job_cluster",
+                "libraries": [
+                    {
+                        "maven": {
+                            "coordinates": "com.databricks:spark-xml_2.12:0.15.0"
+                        }
+                    }
+                ],
+                "timeout_seconds": 0,
+                "email_notifications": {}
+            },
+            {
+                "task_key": "Silver_Initiation_Enrichment",
+                "depends_on": [
+                    {
+                        "task_key": "Bronze_Save_Payments_To_ISO20022"
+                    }
+                ],
+                "notebook_task": {
+                    "notebook_path": "/Repos/ricardo.portilla@databricks.com/field-demo/demo-FSI/Usecase: Payment Lakehouse/PAIN - Silver Refinement",
+                    "source": "WORKSPACE"
+                },
+                "job_cluster_key": "Shared_job_cluster",
+                "timeout_seconds": 0,
+                "email_notifications": {}
+            },
+            {
+                "task_key": "Gold_Summaries_Initiation_To_Clearing",
+                "depends_on": [
+                    {
+                        "task_key": "Silver_Initiation_Enrichment"
+                    },
+                    {
+                        "task_key": "Silver_Clearing_Enrichment"
+                    }
+                ],
+                "notebook_task": {
+                    "notebook_path": "/Repos/ricardo.portilla@databricks.com/field-demo/demo-FSI/Usecase: Payment Lakehouse/Gold Summaries",
+                    "source": "WORKSPACE"
+                },
+                "job_cluster_key": "Shared_job_cluster",
+                "timeout_seconds": 0,
+                "email_notifications": {}
+            }
+        ],
+        "job_clusters": [
+            {
+                "job_cluster_key": "Shared_job_cluster",
+                "new_cluster": {
+                    "cluster_name": "",
+                    "spark_version": "10.4.x-scala2.12",
+                    "aws_attributes": {
+                        "first_on_demand": 1,
+                        "availability": "SPOT_WITH_FALLBACK",
+                        "zone_id": "us-west-2a",
+                        "spot_bid_price_percent": 100,
+                        "ebs_volume_count": 0
+                    },
+                    "node_type_id": "i3.xlarge",
+                    "spark_env_vars": {
+                        "PYSPARK_PYTHON": "/databricks/python3/bin/python3"
+                    },
+                    "enable_elastic_disk": false,
+                    "data_security_mode": "SINGLE_USER",
+                    "runtime_engine": "STANDARD",
+                    "num_workers": 8
+                }
+            }
+        ],
+        "tags": {
+            "DATA_CLASSIFICATION": "PII",
+            "ENV": "PROD",
+            "LOB": "PAYMENTS"
+        },
+        "format": "MULTI_TASK"
+    },
+    "created_time": 1665288501013
+}

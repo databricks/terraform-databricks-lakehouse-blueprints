@@ -58,8 +58,8 @@ resource "azurerm_firewall_policy_rule_collection_group" "this" {
     }
 
     rule {
-      name             = "IPinfo"
-      source_addresses = ["*"]
+      name              = "IPinfo"
+      source_addresses  = ["*"]
       destination_fqdns = ["*.ipinfo.io"]
       protocols {
         port = "443"

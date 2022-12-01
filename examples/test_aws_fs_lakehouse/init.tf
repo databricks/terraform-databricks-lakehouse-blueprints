@@ -1,5 +1,6 @@
 terraform {
   backend "s3" {
+
     bucket = "databricks-terraform-blueprints2"
     key    = "test_aws_fs_lakehouse.tfstate"
     region = "us-east-1"
@@ -7,7 +8,7 @@ terraform {
   required_providers {
     databricks = {
       source  = "databricks/databricks"
-      version = "~>1.0.0"
+      version = "~>1.6.5"
     }
     aws = {
       source  = "hashicorp/aws"

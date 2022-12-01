@@ -2,6 +2,7 @@
 page_title: "Create an AWS Databricks-compatible VPC using Terraform"
 ---
 
+# Create an AWS Databricks-compatible VPC using Terraform
 
 This module uses the following input variables. Please all variables here in a terraform.tfvars file (outside the github project) and reference it using `terraform apply -var-file="<location for tfvars file>/terraform.tfvars"`.
 
@@ -21,7 +22,6 @@ This module uses the following input variables. Please all variables here in a t
 - `subnets` - Private subnet IDs used for workspace creation
 - `cross_account_role_arn` - Cross-account role ARN for deploying Databricks workspace
 - `root_bucket` - Name of S3 bucket used as Databricks root bucket
-
 
 ```hcl
 module "aws_base" {
@@ -52,11 +52,11 @@ terraform {
   required_providers {
     databricks = {
       source  = "databricks/databricks"
-      version = "~>1.0.0"
+      version = "~>1.6.5"
     }
     aws = {
       source  = "hashicorp/aws"
-      version = "~>4.22.0"
+      version = "~>4.35.0"
     }
   }
 }

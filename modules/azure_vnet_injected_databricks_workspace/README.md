@@ -2,7 +2,7 @@
 page_title: "Provisioning Azure Databricks Workspaces with Private Link and Data Exfiltration Protection with Terraform"
 ---
 
-# How to Deploy a Secure Azure Databricks Workspace, Hardened To Prevent Data Exfiltration.
+# How to Deploy a Secure Azure Databricks Workspace, Hardened To Prevent Data Exfiltration
 
 This guide uses the following variables in configurations:
 
