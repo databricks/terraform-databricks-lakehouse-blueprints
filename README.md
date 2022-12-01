@@ -4,7 +4,7 @@
 
 This set of terraform templates is designed to allow every industry practitioner and devops team started quickly with the canonical Regulated Industries security best practices and governance setup as well as highly valuable industry libraries and quickstarts directly in your environment.
 
-![Lakehouse Blueprints](https://raw.githubusercontent.com/databricks/terraform-databricks-lakehouse-blueprints/main/Blueprints.png)
+![Lakehouse Blueprints](https://raw.githubusercontent.com/databricks/terraform-databricks-lakehouse-blueprints/main/Blueprints.jpg)
 
 ---
 
