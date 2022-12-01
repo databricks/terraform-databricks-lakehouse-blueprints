@@ -10,24 +10,3 @@ terraform {
     }
   }
 }
-
-provider "aws" {
-  region = var.region
-}
-
-// initialize provider in "MWS" mode for account-level resources
-provider "databricks" {
-  alias      = "mws"
-  host       = "https://accounts.cloud.databricks.com"
-  account_id = var.databricks_account_id
-  username   = var.databricks_account_username
-  password   = var.databricks_account_password
-}
-
-// initialize provider at workspace level, to create UC resources
-provider "databricks" {
-  alias    = "workspace"
-  host     = var.databricks_workspace_url
-  username = var.databricks_account_username
-  password = var.databricks_account_password
-}

@@ -1,6 +1,5 @@
 resource "databricks_storage_credential" "external" {
-  provider = databricks.workspace
-  name     = aws_iam_role.external_data_access.name
+  name = aws_iam_role.external_data_access.name
   aws_iam_role {
     role_arn = aws_iam_role.external_data_access.arn
   }
@@ -9,7 +8,6 @@ resource "databricks_storage_credential" "external" {
 }
 
 resource "databricks_external_location" "some" {
-  provider        = databricks.workspace
   name            = "external"
   url             = "s3://${aws_s3_bucket.external.id}/some"
   credential_name = databricks_storage_credential.external.id

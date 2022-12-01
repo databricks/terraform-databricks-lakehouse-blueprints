@@ -1,5 +1,4 @@
 resource "databricks_metastore" "this" {
-  provider      = databricks.workspace
   name          = "primary"
   storage_root  = "s3://${aws_s3_bucket.metastore.id}/metastore"
   force_destroy = true
@@ -7,7 +6,6 @@ resource "databricks_metastore" "this" {
 
 
 resource "databricks_metastore_data_access" "this" {
-  provider     = databricks.workspace
   metastore_id = databricks_metastore.this.id
   name         = aws_iam_role.metastore_data_access.name
   aws_iam_role {
@@ -17,7 +15,6 @@ resource "databricks_metastore_data_access" "this" {
 }
 
 resource "databricks_metastore_assignment" "default_metastore" {
-  provider             = databricks.workspace
   count                = length(var.workspaces_to_associate)
   workspace_id         = var.workspaces_to_associate[count.index]
   metastore_id         = databricks_metastore.this.id
