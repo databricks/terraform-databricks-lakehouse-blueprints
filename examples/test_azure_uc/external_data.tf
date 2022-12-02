@@ -1,7 +1,7 @@
 resource "azurerm_databricks_access_connector" "ext_access_connector" {
   name                = "ext-databricks-mi"
-  resource_group_name = data.azurerm_resource_group.this.name
-  location            = data.azurerm_resource_group.this.location
+  resource_group_name = azurerm_resource_group.this.name
+  location            = azurerm_resource_group.this.location
   identity {
     type = "SystemAssigned"
   }
