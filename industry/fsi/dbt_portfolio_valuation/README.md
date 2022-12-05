@@ -1,4 +1,3 @@
-# Databricks notebook source
 ## Portfolio Valuation and Analysis using dbt on Databricks 
 
 The dbt project at the github [here](https://github.com/rportilla-databricks/dbt-asset-mgmt) reads simulated trades (executed trades for a given portfolio), quotes, market_trades (external), and sentiment data from a sample of reddit data to showcase how intraday portfolio value can be computed incrementally using Delta Lake and dbt on the Lakehouse. 
