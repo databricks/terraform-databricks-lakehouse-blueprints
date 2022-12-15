@@ -34,6 +34,14 @@ module "aws_customer_managed_vpc" {
   depends_on = [module.aws_base]
 }
 
+module "databricks_cmk" { // using cmk module developed by andrew.weaver@databricks.com
+  source                 = "./modules/databricks_cmk"
+  cross_account_role_arn = module.aws_base.cross_account_role_arn
+  resource_prefix        = local.prefix
+  region                 = var.region
+  cmk_admin              = var.cmk_admin
+}
+
 // Enable UC for the workspace aboves
 module "aws_uc" {
   source                      = "../../modules/aws_uc/"

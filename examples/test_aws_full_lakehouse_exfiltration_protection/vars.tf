@@ -8,6 +8,13 @@ variable "databricks_users" {
 variable "databricks_metastore_admins" {}
 variable "unity_admin_group" {}
 
+#cmk
+variable "cmk_admin" {
+  type      = string
+  sensitive = true
+  default   = "arn:aws:iam::026655378770:user/hao" // sample arn 
+}
+
 variable "allow_ip_list" { default = ["0.0.0.0/0"] }
 
 variable "use_ip_access_list" { default = true }
