@@ -2,7 +2,6 @@ data "databricks_user" "this" {
   provider   = databricks.mws
   for_each   = toset(concat(var.databricks_users, var.databricks_metastore_admins))
   user_name  = each.key
-  depends_on = [module.aws_fs_lakehouse]
 }
 
 resource "databricks_group" "admin_group" {
