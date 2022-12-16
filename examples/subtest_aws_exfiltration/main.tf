@@ -1,60 +1,53 @@
-variable "databricks_account_username" {}
-variable "databricks_account_password" {}
-variable "databricks_account_id" {}
-
-variable "tags" {
-  default = {}
+module "db_spoke_vpc" {
+  source                         = "./modules/aws_spoke_vpc"
+  spoke_cidr_block               = var.spoke_cidr_block
+  spoke_db_private_subnets_cidr  = local.spoke_db_private_subnets_cidr
+  spoke_tgw_private_subnets_cidr = local.spoke_tgw_private_subnets_cidr
+  sg_egress_ports                = local.sg_egress_ports
+  sg_ingress_protocol            = local.sg_ingress_protocol
+  sg_egress_protocol             = local.sg_egress_protocol
+  region                         = var.region
+  azs                            = var.azs
 }
 
-variable "spoke_cidr_block" {
-  default = "10.173.0.0/16"
-}
-variable "hub_cidr_block" {
-  default = "10.10.0.0/16"
-}
-variable "region" {
-  default = "eu-central-1"
-}
-
-resource "random_string" "naming" {
-  special = false
-  upper   = false
-  length  = 6
-}
-variable "whitelisted_urls" {
-  default = [".pypi.org", ".pythonhosted.org", ".cran.r-project.org"]
+module "aws_base" { // creates iam role and root bucket
+  source                      = "./modules/aws_base_no_vpc"
+  tags                        = var.tags
+  region                      = var.region
+  databricks_account_password = var.databricks_account_password
+  databricks_account_id       = var.databricks_account_id
+  databricks_account_username = var.databricks_account_username
 }
 
-variable "db_web_app" {
-  default = "frankfurt.cloud.databricks.com"
+
+module "databricks_cmk" { // using cmk module developed by andrew.weaver@databricks.com
+  source                 = "./modules/aws_databricks_cmk"
+  cross_account_role_arn = module.aws_base.cross_account_role_arn
+  resource_prefix        = local.prefix
+  region                 = var.region
+  cmk_admin              = var.cmk_admin
 }
 
-variable "db_tunnel" {
-  default = "tunnel.eu-central-1.cloud.databricks.com"
-}
 
-variable "db_rds" {
-  default = "mdv2llxgl8lou0.ceptxxgorjrc.eu-central-1.rds.amazonaws.com"
-}
+// Deploy Workspace Using Above-created VPC subnets and infrastructure
+module "aws_customer_managed_vpc" {
+  source                      = "./modules/aws_customer_managed_vpc_cmk_ws/"
+  databricks_account_id       = var.databricks_account_id
+  databricks_account_username = var.databricks_account_username
+  databricks_account_password = var.databricks_account_password
+  region                      = var.region
+  relay_vpce_service          = var.relay_vpce_service
+  workspace_vpce_service      = var.workspace_vpce_service
+  vpce_subnet_cidr            = var.vpce_subnet_cidr
+  vpc_id                      = module.db_spoke_vpc.spoke_vpc_id
+  subnet_ids                  = module.db_spoke_vpc.spoke_db_private_subnets_id
+  security_group_id           = module.db_spoke_vpc.default_spoke_sg
+  cross_account_arn           = module.aws_base.cross_account_role_arn
+  workspace_storage_cmk       = module.databricks_cmk.workspace_storage_cmk
+  managed_services_cmk        = module.databricks_cmk.managed_services_cmk
 
-variable "db_control_plane" {
-  default = "18.159.44.32/28"
-}
-
-variable "prefix" {
-  default = "demo"
-}
-
-locals {
-  prefix                         = "${var.prefix}${random_string.naming.result}"
-  spoke_db_private_subnets_cidr  = [cidrsubnet(var.spoke_cidr_block, 3, 0), cidrsubnet(var.spoke_cidr_block, 3, 1)]
-  spoke_tgw_private_subnets_cidr = [cidrsubnet(var.spoke_cidr_block, 3, 2), cidrsubnet(var.spoke_cidr_block, 3, 3)]
-  hub_tgw_private_subnets_cidr   = [cidrsubnet(var.hub_cidr_block, 3, 0)]
-  hub_nat_public_subnets_cidr    = [cidrsubnet(var.hub_cidr_block, 3, 1)]
-  hub_firewall_subnets_cidr      = [cidrsubnet(var.hub_cidr_block, 3, 2)]
-  sg_egress_ports                = [443, 3306, 6666]
-  sg_ingress_protocol            = ["tcp", "udp"]
-  sg_egress_protocol             = ["tcp", "udp"]
-  availability_zones             = ["${var.region}a", "${var.region}b"]
-  db_root_bucket                 = "${var.prefix}${random_string.naming.result}-rootbucket.s3.amazonaws.com"
+  providers = {
+    databricks = databricks.mws
+  }
+  depends_on = [module.aws_base]
 }
