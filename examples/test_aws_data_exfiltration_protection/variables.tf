@@ -51,6 +51,7 @@ resource "random_string" "naming" {
   upper   = false
   length  = 6
 }
+
 variable "whitelisted_urls" {
   default = [".pypi.org", ".pythonhosted.org", ".cran.r-project.org"]
 }
