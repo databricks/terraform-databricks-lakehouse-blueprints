@@ -1,0 +1,3 @@
+{'name' : 'Ritchie Valens', 'loan_id' : 1, 'lender_name' : 'macys', 'processor' : 'bread_financial', 'monthly_loan_amount' : '100', 'term' : '12M', 'balance' : 200, 'past_due' : 10}
+{'name' : 'James Brown', 'loan_id' : 2, 'lender_name' : 'walmart', 'processor' : 'klarna', 'monthly_loan_amount' : '300', 'term' : '24M', 'balance' : 300, 'past_due' : 500}
+{'name' : 'Buddy Holly', 'loan_id' : 3, 'lender_name' : 'laz-e-boy furniture', 'processor' : 'upstart', 'monthly_loan_amount' : '1000', 'term' : '6M', 'balance' : 5000, 'past_due' : 0}

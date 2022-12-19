@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CreditReports>
+    <Subject>
+        <Name>James Brown</Name>
+        <SSN>111-22-3333</SSN>
+        <Address>9 South Point Lane</Address>
+        <Trades>
+          <Trade>
+            <AccountNumber>ACCT1</AccountNumber>
+            <DateOpened>2010-01-03</DateOpened>
+            <Balance>2000</Balance>
+            <PastDue>200</PastDue>
+            <Terms>1M200</Terms>
+          </Trade>
+          <Trade>
+            <AccountNumber>ACCT2</AccountNumber>
+            <DateOpened>2019-01-03</DateOpened>
+            <Balance>300</Balance>
+            <PastDue>0</PastDue>
+            <Terms>6M200</Terms>
+          </Trade>
+        </Trades>
+    </Subject>
+    <Subject>
+        <Name>Buddy Holly</Name>
+        <SSN>222-33-4444</SSN>
+        <Address>10 South Point Lane</Address>
+        <Trades>
+                  <Trade>
+          <AccountNumber>ACCT1</AccountNumber>
+          <DateOpened>2011-01-03</DateOpened>
+          <Balance>2000</Balance>
+          <PastDue>0</PastDue>
+          <Terms>1M200</Terms>
+                    </Trade>
+        </Trades>
+    </Subject>
+    <Subject>
+        <Name>Ritchie Valens</Name>
+        <SSN>333-44-5555</SSN>
+        <Address>11 South Point Lane</Address>
+        <Trades>
+                  <Trade>
+
+          <AccountNumber>ACCT1</AccountNumber>
+          <DateOpened>2012-01-03</DateOpened>
+          <Balance>30000</Balance>
+          <PastDue>1000</PastDue>
+          <Terms>1M1000</Terms>
+                    </Trade>
+        </Trades>
+    </Subject>
+</CreditReports>

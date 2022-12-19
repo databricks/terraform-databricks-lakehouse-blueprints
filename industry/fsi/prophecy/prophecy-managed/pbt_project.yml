@@ -1,0 +1,92 @@
+name: Team-Project
+description: ''
+version: v0.0.4
+author: ''
+language: python
+buildSystem: wheel
+pipelines:
+  pipelines/credit_decision_metrics:
+    name: credit_decision_metrics 
+    description: ''
+    author: ricardo.portilla@databricks.com
+    mode: batch
+    language: python
+    createdAt: '2022-12-10 02:42:41'
+    datasets:
+      inputs:
+      - datasets/BNPL_LexisNexis
+      - datasets/credit_report_and_tradelines
+      - datasets/customer_info
+      outputs:
+      - datasets/credit_metrics
+    dependencies: {}
+datasets:
+  datasets/credit_report_and_tradelines:
+    name: credit_report_and_tradelines
+    description: ''
+    author: ricardo.portilla@databricks.com
+    createdAt: '2022-12-11 15:54:27'
+    physicalDatasets:
+      dev:
+        fabricId: 1063
+        datasetType: File
+        description: ''
+        author: ricardo.portilla@databricks.com
+        createdAt: '2022-12-11 15:54:27'
+  datasets/customer_info:
+    name: customer_info
+    description: ''
+    author: ricardo.portilla@databricks.com
+    createdAt: '2022-12-11 16:18:09'
+    physicalDatasets:
+      dev:
+        fabricId: 1063
+        datasetType: File
+        description: ''
+        author: ricardo.portilla@databricks.com
+        createdAt: '2022-12-11 16:18:09'
+  datasets/Auto_LexisNexis:
+    name: Auto_LexisNexis
+    description: ''
+    author: ricardo.portilla@databricks.com
+    createdAt: '2022-12-15 22:25:31'
+    physicalDatasets:
+      dev:
+        fabricId: 1063
+        datasetType: File
+        description: ''
+        author: ricardo.portilla@databricks.com
+        createdAt: '2022-12-15 22:25:31'
+  datasets/BNPL_LexisNexis:
+    name: BNPL_LexisNexis
+    description: ''
+    author: ricardo.portilla@databricks.com
+    createdAt: '2022-12-15 22:27:41'
+    physicalDatasets:
+      dev:
+        fabricId: 1063
+        datasetType: File
+        description: ''
+        author: ricardo.portilla@databricks.com
+        createdAt: '2022-12-15 22:27:41'
+  datasets/credit_metrics:
+    name: credit_metrics
+    description: ''
+    author: ricardo.portilla@databricks.com
+    createdAt: '2022-12-14 03:55:04'
+    physicalDatasets:
+      dev:
+        fabricId: 1063
+        datasetType: File
+        description: ''
+        author: ricardo.portilla@databricks.com
+        createdAt: '2022-12-14 03:55:04'
+templates: {}
+jobs: {}
+libraries: []
+subgraphs: {}
+sqlModels: {}
+sqlPipeline: null
+dependencies: []
+projectDependencies: {}
+pipelineConfigurations: {}

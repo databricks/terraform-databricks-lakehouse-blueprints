@@ -1,0 +1,18 @@
+version: 1
+schema:
+  type: struct
+  fields:
+  - name: reported_income
+    type: string
+    nullable: true
+    metadata:
+      description: ''
+      mappings: []
+      tags: []
+  - name: debt_to_income_ratio
+    type: double
+    nullable: true
+    metadata:
+      description: ''
+      mappings: []
+      tags: []

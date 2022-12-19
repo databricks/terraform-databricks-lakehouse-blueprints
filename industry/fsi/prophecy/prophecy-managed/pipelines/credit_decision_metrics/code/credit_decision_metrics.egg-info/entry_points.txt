@@ -1,0 +1,2 @@
+[console_scripts]
+main = default_risk_ingest_and_explore.pipeline:main
