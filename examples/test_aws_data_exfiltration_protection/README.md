@@ -8,6 +8,9 @@ Users of this template minimally should do these:
 2. Create a CMK admin role in IAM and get its ARN and supply it to `var.cmk_admin`.
 3. Run `terraform init` and `terraform apply` to deploy resources.
 
+## Acknowledgement
+This sample template takes CMK module from the work of andrew.weaver@databricks.com. See original repo here: https://github.com/andyweaves/databricks-terraform-e2e-examples.
+
 ## Architecture
 
 > Take reference to official guide diagram: https://registry.terraform.io/providers/databricks/databricks/latest/docs/guides/aws-e2-firewall-hub-and-spoke
