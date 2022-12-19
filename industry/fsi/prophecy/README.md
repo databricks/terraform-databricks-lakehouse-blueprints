@@ -32,3 +32,5 @@ See the sample pipeline - create a branch and modify as needed to experiment wit
 ## Step 5 - Create a Databricks SQL Dashboard 
 
 Execute the view creation `02_Create_DTI_View.sql` in the [lakehouse blueprints prophecy folder](https://github.com/databricks/terraform-databricks-lakehouse-blueprints/tree/main/industry/fsi/prophecy) and import the Prophecy Credit Decision Dashboard to see basic visualizations and metrics available in Databricks. This completes the end-to-end quickstart with Prophecy on Databricks.
+
+![DBSQL Dashboard](https://raw.githubusercontent.com/databricks/terraform-databricks-lakehouse-blueprints/main/industry/fsi/images/dbsql_dash.png)
