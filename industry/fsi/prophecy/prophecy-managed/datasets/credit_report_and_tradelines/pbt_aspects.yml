@@ -1,0 +1,81 @@
+version: 1
+schema:
+  type: struct
+  fields:
+  - name: Address
+    type: string
+    nullable: true
+    metadata:
+      description: ''
+      mappings: []
+      tags: []
+  - name: Name
+    type: string
+    nullable: true
+    metadata:
+      description: ''
+      mappings: []
+      tags: []
+  - name: SSN
+    type: string
+    nullable: true
+    metadata:
+      description: ''
+      mappings: []
+      tags: []
+  - name: Trades
+    type:
+      type: struct
+      fields:
+      - name: Trade
+        type:
+          type: array
+          elementType:
+            type: struct
+            fields:
+            - name: AccountNumber
+              type: string
+              nullable: true
+              metadata:
+                description: ''
+                mappings: []
+                tags: []
+            - name: Balance
+              type: long
+              nullable: true
+              metadata:
+                description: ''
+                mappings: []
+                tags: []
+            - name: DateOpened
+              type: date
+              nullable: true
+              metadata:
+                description: ''
+                mappings: []
+                tags: []
+            - name: PastDue
+              type: long
+              nullable: true
+              metadata:
+                description: ''
+                mappings: []
+                tags: []
+            - name: Terms
+              type: string
+              nullable: true
+              metadata:
+                description: ''
+                mappings: []
+                tags: []
+          containsNull: true
+        nullable: true
+        metadata:
+          description: ''
+          mappings: []
+          tags: []
+    nullable: true
+    metadata:
+      description: ''
+      mappings: []
+      tags: []

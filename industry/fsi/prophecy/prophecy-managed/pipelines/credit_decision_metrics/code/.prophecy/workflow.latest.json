@@ -1,0 +1,874 @@
+{
+  "metainfo" : {
+    "id" : "1",
+    "language" : "python",
+    "fabricId" : "1063",
+    "frontEndLanguage" : "sql",
+    "mode" : "batch",
+    "udfs" : {
+      "language" : "python",
+      "udfs" : [ ]
+    },
+    "udafs" : {
+      "language" : "python",
+      "code" : ""
+    },
+    "configuration" : {
+      "common" : {
+        "type" : "record",
+        "fields" : [ ]
+      },
+      "oldCommon" : {
+        "type" : "record",
+        "fields" : [ ]
+      },
+      "fabrics" : { },
+      "instances" : { },
+      "selected" : "default",
+      "nonEditable" : [ ],
+      "isSubscribedPipelineWithPipelineConfigs" : false
+    },
+    "sparkConf" : [ ],
+    "hadoopConf" : [ ],
+    "codeMode" : "sparse",
+    "buildSystem" : "maven",
+    "externalDependencies" : [ ],
+    "isImported" : false,
+    "interimMode" : "Full",
+    "interimModeEnabled" : true,
+    "visualCodeInterimMode" : "Disabled",
+    "recordsLimit" : {
+      "enabled" : false,
+      "value" : 1000
+    },
+    "topLevelPackage" : "default_risk_ingest_and_explore"
+  },
+  "connections" : [ {
+    "id" : "pzesh3hVpfAE9ru4YX4eU",
+    "source" : "u4GEIniBxdIH_R0bvjGJR$$91V69l35qw7_QDaowixo1",
+    "sourcePort" : "KbR44dAh9jOIYrTs77IiG$$-nV6b8MTrq3wTCPY4anmb",
+    "target" : "5orn-dokzjY_FROS42beQ$$ctT9a5eNfGrzOcGkBq_If",
+    "targetPort" : "RxW0rVd1bL48OjwhXO554$$MaCSRlMHr5-KeeA8tgmXw"
+  }, {
+    "id" : "JoOtv0c0K0RJEz_uILh4e",
+    "source" : "uwRLxdIbG3dnBIdkiG59s$$_TxxLMpMWhoKiohUEOCW-",
+    "sourcePort" : "36Dv5EHagBxE0QYKNkhRu$$VDoGs6nopdH16EPF7JRXK",
+    "target" : "5orn-dokzjY_FROS42beQ$$ctT9a5eNfGrzOcGkBq_If",
+    "targetPort" : "B9yhCy8qDGhClj_Sg1p-1$$3rEf9pzt6RjcFuFnJuKfJ"
+  }, {
+    "id" : "vnJA5pUXjMb570Vh6hPlF",
+    "source" : "5orn-dokzjY_FROS42beQ$$ctT9a5eNfGrzOcGkBq_If",
+    "sourcePort" : "PXygJXehCnKxAC1k8TzAW$$dXNbU13dyFakgKWrD1UCZ",
+    "target" : "smS0gAPeUyiXMuVfyp2yw$$Gy-7KF-5ePGfFNXNSZjd1",
+    "targetPort" : "vo8m03zgAin67U6bo_aEy$$JYMk4ypVTwnCy8yZEUwzW"
+  }, {
+    "id" : "lbvUc7AHiRqIbp_CtOyxt",
+    "source" : "smS0gAPeUyiXMuVfyp2yw$$Gy-7KF-5ePGfFNXNSZjd1",
+    "sourcePort" : "cQ2X5FID-V0VnqBYpsto0$$jUT1EnJ5zEGWcDyji4AZq",
+    "target" : "QWfluIXAdr_cfXskwyY1W$$s7-PaW0LjhpcWuWfuy8qq",
+    "targetPort" : "Z4R3i1rpkSard4nAtPu9X$$N9yordTi12ZIR7T7YtCng"
+  }, {
+    "id" : "pH83RzwicHJ4hud01aFle",
+    "source" : "MinXdh8COJ2DBW8WhDft_$$Jfijw-DDPc1Zd2cgIKpJb",
+    "sourcePort" : "P_CvudxW_vyAohV4mMd7T$$MC_-vDflylU2mJjFfuDih",
+    "target" : "2KVz4vUuxzYp7jh4aVhkb$$c5kS3blst176SyvuTgCAT",
+    "targetPort" : "NwpZwVCKSWfETH2EsSICK$$WarwPA6wVB-wlheZjDhpZ"
+  }, {
+    "id" : "Ue4bPqZY5mMvXxJBvINTQ",
+    "source" : "2KVz4vUuxzYp7jh4aVhkb$$c5kS3blst176SyvuTgCAT",
+    "sourcePort" : "XSB1tuUuQf37YIaDrYRr_$$cacot8jgrBPE2uREwHmp_",
+    "target" : "QWfluIXAdr_cfXskwyY1W$$s7-PaW0LjhpcWuWfuy8qq",
+    "targetPort" : "EeKzJ7UFL309OHkqv4528$$AIlp8jBT6wO0imrAyhM26"
+  }, {
+    "id" : "i69yE4JVGixigQO92iFRn",
+    "source" : "QWfluIXAdr_cfXskwyY1W$$s7-PaW0LjhpcWuWfuy8qq",
+    "sourcePort" : "y-oQUwr1yD05-Y2BXO-KO$$fwEw3af3kQ2xAfsRqIami",
+    "target" : "Y3NzMnb9jdKWn17PEJKiG$$9Obmdq0OkAaYtyTMyL4VR",
+    "targetPort" : "duFLqv57jQT-N_gpuji7A$$hNtjqTz4c9o-Lb-51jIG8"
+  }, {
+    "id" : "zQim-BKH68IYXbIMEFyA-",
+    "source" : "Y3NzMnb9jdKWn17PEJKiG$$9Obmdq0OkAaYtyTMyL4VR",
+    "sourcePort" : "c-Jpi-qf1fQaFfxNkP2CW$$UJKWx08DvcmQ4MgXHPMXq",
+    "target" : "Vw4Kv0uI5vMjtaMWYuuRu$$GiKYQGTWNr2mZz1zfXvfD",
+    "targetPort" : "ZrHmfMA1mVsoLQAOhh_cg$$_mK1fIkoWvby5A_qa25gJ"
+  } ],
+  "processes" : {
+    "Vw4Kv0uI5vMjtaMWYuuRu$$GiKYQGTWNr2mZz1zfXvfD" : {
+      "id" : "Vw4Kv0uI5vMjtaMWYuuRu$$GiKYQGTWNr2mZz1zfXvfD",
+      "component" : "Target",
+      "metadata" : {
+        "label" : "credit_metrics",
+        "slug" : "credit_metrics",
+        "x" : -779.0499999999998,
+        "y" : -400.92500000000007,
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false,
+        "isImported" : false
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "ZrHmfMA1mVsoLQAOhh_cg$$_mK1fIkoWvby5A_qa25gJ",
+          "slug" : "in0"
+        } ],
+        "outputs" : [ ],
+        "selectedInputFields" : [ ],
+        "isCustomOutputSchema" : false
+      },
+      "properties" : {
+        "datasetId" : "datasets/credit_metrics"
+      }
+    },
+    "MinXdh8COJ2DBW8WhDft_$$Jfijw-DDPc1Zd2cgIKpJb" : {
+      "id" : "MinXdh8COJ2DBW8WhDft_$$Jfijw-DDPc1Zd2cgIKpJb",
+      "component" : "Source",
+      "metadata" : {
+        "label" : "BNPL_LexisNexis",
+        "slug" : "BNPL_LexisNexis",
+        "x" : -1830.1249999999998,
+        "y" : -146.92499999999984,
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false,
+        "isImported" : false
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "P_CvudxW_vyAohV4mMd7T$$MC_-vDflylU2mJjFfuDih",
+          "slug" : "out"
+        } ],
+        "selectedInputFields" : [ ],
+        "isCustomOutputSchema" : false
+      },
+      "properties" : {
+        "datasetId" : "datasets/BNPL_LexisNexis"
+      }
+    },
+    "u4GEIniBxdIH_R0bvjGJR$$91V69l35qw7_QDaowixo1" : {
+      "id" : "u4GEIniBxdIH_R0bvjGJR$$91V69l35qw7_QDaowixo1",
+      "component" : "Source",
+      "metadata" : {
+        "label" : "Reported_Income",
+        "slug" : "Reported_Income",
+        "x" : -1831.6,
+        "y" : -577.8,
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false,
+        "isImported" : false
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "KbR44dAh9jOIYrTs77IiG$$-nV6b8MTrq3wTCPY4anmb",
+          "slug" : "out"
+        } ],
+        "selectedInputFields" : [ ],
+        "isCustomOutputSchema" : false
+      },
+      "properties" : {
+        "datasetId" : "datasets/customer_info"
+      }
+    },
+    "uwRLxdIbG3dnBIdkiG59s$$_TxxLMpMWhoKiohUEOCW-" : {
+      "id" : "uwRLxdIbG3dnBIdkiG59s$$_TxxLMpMWhoKiohUEOCW-",
+      "component" : "Source",
+      "metadata" : {
+        "label" : "Bureau_Source",
+        "slug" : "Bureau_Source",
+        "x" : -1826.8,
+        "y" : -372.79999999999995,
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false,
+        "isImported" : false
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "36Dv5EHagBxE0QYKNkhRu$$VDoGs6nopdH16EPF7JRXK",
+          "slug" : "out"
+        } ],
+        "selectedInputFields" : [ ],
+        "isCustomOutputSchema" : false
+      },
+      "properties" : {
+        "datasetId" : "datasets/credit_report_and_tradelines"
+      }
+    },
+    "smS0gAPeUyiXMuVfyp2yw$$Gy-7KF-5ePGfFNXNSZjd1" : {
+      "id" : "smS0gAPeUyiXMuVfyp2yw$$Gy-7KF-5ePGfFNXNSZjd1",
+      "component" : "SchemaTransform",
+      "metadata" : {
+        "label" : "Flatten",
+        "slug" : "Flatten",
+        "x" : -1426.4499999999998,
+        "y" : -484.3499999999999,
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false,
+        "isImported" : false
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "vo8m03zgAin67U6bo_aEy$$JYMk4ypVTwnCy8yZEUwzW",
+          "slug" : "in0"
+        } ],
+        "outputs" : [ {
+          "id" : "cQ2X5FID-V0VnqBYpsto0$$jUT1EnJ5zEGWcDyji4AZq",
+          "slug" : "out",
+          "schema" : {
+            "type" : "struct",
+            "fields" : [ {
+              "name" : "name",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "REPORTED_INCOME",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "monthly_loan_amount",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            } ]
+          }
+        } ],
+        "selectedInputFields" : [ ],
+        "isCustomOutputSchema" : true
+      },
+      "properties" : {
+        "columnsSelector" : [ "vo8m03zgAin67U6bo_aEy$$JYMk4ypVTwnCy8yZEUwzW##CUSTOMER_NAME", "vo8m03zgAin67U6bo_aEy$$JYMk4ypVTwnCy8yZEUwzW##Address", "vo8m03zgAin67U6bo_aEy$$JYMk4ypVTwnCy8yZEUwzW##Trades", "vo8m03zgAin67U6bo_aEy$$JYMk4ypVTwnCy8yZEUwzW##DOB", "vo8m03zgAin67U6bo_aEy$$JYMk4ypVTwnCy8yZEUwzW##Trades.Trade", "vo8m03zgAin67U6bo_aEy$$JYMk4ypVTwnCy8yZEUwzW##SSN", "vo8m03zgAin67U6bo_aEy$$JYMk4ypVTwnCy8yZEUwzW##CUSTOMER_ID" ],
+        "transformations" : [ {
+          "kind" : "AddReplaceColumn",
+          "AddReplaceColumn" : {
+            "sourceColumn" : "monthly_loan_amount",
+            "expression" : {
+              "format" : "sql",
+              "expression" : "cast(split(trades.trade[0].terms, 'M')[1] as long)"
+            }
+          },
+          "DropColumn" : {
+            "sourceColumn" : ""
+          },
+          "RenameColumn" : {
+            "sourceColumn" : "",
+            "targetColumn" : ""
+          }
+        }, {
+          "kind" : "DropColumn",
+          "DropColumn" : {
+            "sourceColumn" : "CUSTOMER_ID"
+          },
+          "RenameColumn" : {
+            "sourceColumn" : "",
+            "targetColumn" : ""
+          },
+          "AddReplaceColumn" : {
+            "sourceColumn" : "",
+            "expression" : {
+              "expression" : "",
+              "format" : "python"
+            }
+          }
+        }, {
+          "kind" : "DropColumn",
+          "DropColumn" : {
+            "sourceColumn" : "DOB"
+          },
+          "RenameColumn" : {
+            "sourceColumn" : "",
+            "targetColumn" : ""
+          },
+          "AddReplaceColumn" : {
+            "sourceColumn" : "",
+            "expression" : {
+              "expression" : "",
+              "format" : "python"
+            }
+          }
+        }, {
+          "kind" : "DropColumn",
+          "DropColumn" : {
+            "sourceColumn" : "Address"
+          },
+          "RenameColumn" : {
+            "sourceColumn" : "",
+            "targetColumn" : ""
+          },
+          "AddReplaceColumn" : {
+            "sourceColumn" : "",
+            "expression" : {
+              "expression" : "",
+              "format" : "python"
+            }
+          }
+        }, {
+          "kind" : "DropColumn",
+          "DropColumn" : {
+            "sourceColumn" : "SSN"
+          },
+          "RenameColumn" : {
+            "sourceColumn" : "",
+            "targetColumn" : ""
+          },
+          "AddReplaceColumn" : {
+            "sourceColumn" : "",
+            "expression" : {
+              "expression" : "",
+              "format" : "python"
+            }
+          }
+        }, {
+          "kind" : "DropColumn",
+          "DropColumn" : {
+            "sourceColumn" : "Trades"
+          },
+          "RenameColumn" : {
+            "sourceColumn" : "",
+            "targetColumn" : ""
+          },
+          "AddReplaceColumn" : {
+            "sourceColumn" : "",
+            "expression" : {
+              "expression" : "",
+              "format" : "python"
+            }
+          }
+        }, {
+          "kind" : "DropColumn",
+          "DropColumn" : {
+            "sourceColumn" : "CUSTOMER_NAME"
+          },
+          "RenameColumn" : {
+            "sourceColumn" : "",
+            "targetColumn" : ""
+          },
+          "AddReplaceColumn" : {
+            "sourceColumn" : "",
+            "expression" : {
+              "expression" : "",
+              "format" : "python"
+            }
+          }
+        } ]
+      }
+    },
+    "2KVz4vUuxzYp7jh4aVhkb$$c5kS3blst176SyvuTgCAT" : {
+      "id" : "2KVz4vUuxzYp7jh4aVhkb$$c5kS3blst176SyvuTgCAT",
+      "component" : "SchemaTransform",
+      "metadata" : {
+        "label" : "SchemaTransform_1",
+        "slug" : "SchemaTransform_1",
+        "x" : -1425.5874999999996,
+        "y" : -279.5124999999999,
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false,
+        "isImported" : false
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "NwpZwVCKSWfETH2EsSICK$$WarwPA6wVB-wlheZjDhpZ",
+          "slug" : "in0"
+        } ],
+        "outputs" : [ {
+          "id" : "XSB1tuUuQf37YIaDrYRr_$$cacot8jgrBPE2uREwHmp_",
+          "slug" : "out",
+          "schema" : {
+            "type" : "struct",
+            "fields" : [ {
+              "name" : "name",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "REPORTED_INCOME",
+              "type" : "void",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "monthly_loan_amount",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            } ]
+          }
+        } ],
+        "selectedInputFields" : [ ],
+        "isCustomOutputSchema" : true
+      },
+      "properties" : {
+        "columnsSelector" : [ "NwpZwVCKSWfETH2EsSICK$$WarwPA6wVB-wlheZjDhpZ##balance", "NwpZwVCKSWfETH2EsSICK$$WarwPA6wVB-wlheZjDhpZ##lender_name", "NwpZwVCKSWfETH2EsSICK$$WarwPA6wVB-wlheZjDhpZ##term", "NwpZwVCKSWfETH2EsSICK$$WarwPA6wVB-wlheZjDhpZ##past_due", "NwpZwVCKSWfETH2EsSICK$$WarwPA6wVB-wlheZjDhpZ##processor", "NwpZwVCKSWfETH2EsSICK$$WarwPA6wVB-wlheZjDhpZ##loan_id" ],
+        "transformations" : [ {
+          "kind" : "DropColumn",
+          "DropColumn" : {
+            "sourceColumn" : "balance"
+          },
+          "RenameColumn" : {
+            "sourceColumn" : "",
+            "targetColumn" : ""
+          },
+          "AddReplaceColumn" : {
+            "sourceColumn" : "",
+            "expression" : {
+              "expression" : "",
+              "format" : "python"
+            }
+          }
+        }, {
+          "kind" : "DropColumn",
+          "DropColumn" : {
+            "sourceColumn" : "lender_name"
+          },
+          "RenameColumn" : {
+            "sourceColumn" : "",
+            "targetColumn" : ""
+          },
+          "AddReplaceColumn" : {
+            "sourceColumn" : "",
+            "expression" : {
+              "expression" : "",
+              "format" : "python"
+            }
+          }
+        }, {
+          "kind" : "DropColumn",
+          "DropColumn" : {
+            "sourceColumn" : "loan_id"
+          },
+          "RenameColumn" : {
+            "sourceColumn" : "",
+            "targetColumn" : ""
+          },
+          "AddReplaceColumn" : {
+            "sourceColumn" : "",
+            "expression" : {
+              "expression" : "",
+              "format" : "python"
+            }
+          }
+        }, {
+          "kind" : "DropColumn",
+          "DropColumn" : {
+            "sourceColumn" : "past_due"
+          },
+          "RenameColumn" : {
+            "sourceColumn" : "",
+            "targetColumn" : ""
+          },
+          "AddReplaceColumn" : {
+            "sourceColumn" : "",
+            "expression" : {
+              "expression" : "",
+              "format" : "python"
+            }
+          }
+        }, {
+          "kind" : "DropColumn",
+          "DropColumn" : {
+            "sourceColumn" : "processor"
+          },
+          "RenameColumn" : {
+            "sourceColumn" : "",
+            "targetColumn" : ""
+          },
+          "AddReplaceColumn" : {
+            "sourceColumn" : "",
+            "expression" : {
+              "expression" : "",
+              "format" : "python"
+            }
+          }
+        }, {
+          "kind" : "DropColumn",
+          "DropColumn" : {
+            "sourceColumn" : "term"
+          },
+          "RenameColumn" : {
+            "sourceColumn" : "",
+            "targetColumn" : ""
+          },
+          "AddReplaceColumn" : {
+            "sourceColumn" : "",
+            "expression" : {
+              "expression" : "",
+              "format" : "python"
+            }
+          }
+        }, {
+          "kind" : "AddReplaceColumn",
+          "AddReplaceColumn" : {
+            "sourceColumn" : "REPORTED_INCOME",
+            "expression" : {
+              "format" : "sql",
+              "expression" : "cast(null as long)"
+            }
+          },
+          "DropColumn" : {
+            "sourceColumn" : ""
+          },
+          "RenameColumn" : {
+            "sourceColumn" : "",
+            "targetColumn" : ""
+          }
+        } ]
+      }
+    },
+    "Y3NzMnb9jdKWn17PEJKiG$$9Obmdq0OkAaYtyTMyL4VR" : {
+      "id" : "Y3NzMnb9jdKWn17PEJKiG$$9Obmdq0OkAaYtyTMyL4VR",
+      "component" : "Aggregate",
+      "metadata" : {
+        "label" : "Aggregate_1",
+        "slug" : "Aggregate_1",
+        "x" : -1066.7874999999997,
+        "y" : -400.71249999999986,
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false,
+        "isImported" : false
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "duFLqv57jQT-N_gpuji7A$$hNtjqTz4c9o-Lb-51jIG8",
+          "slug" : "in0"
+        } ],
+        "outputs" : [ {
+          "id" : "c-Jpi-qf1fQaFfxNkP2CW$$UJKWx08DvcmQ4MgXHPMXq",
+          "slug" : "out",
+          "schema" : {
+            "type" : "struct",
+            "fields" : [ {
+              "name" : "name",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "income",
+              "type" : "double",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "debt",
+              "type" : "long",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            } ]
+          }
+        } ],
+        "selectedInputFields" : [ ],
+        "isCustomOutputSchema" : true
+      },
+      "properties" : {
+        "allIns" : false,
+        "doPivot" : false,
+        "aggregate" : [ {
+          "target" : "income",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "max(reported_income/12)"
+          },
+          "description" : "",
+          "_row_id" : ""
+        }, {
+          "target" : "debt",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "sum(monthly_loan_amount)"
+          },
+          "description" : "",
+          "_row_id" : ""
+        } ],
+        "allowSelection" : true,
+        "pivotColumn" : null,
+        "pivotValues" : [ ],
+        "activeTab" : "aggregate",
+        "columnsSelector" : [ ],
+        "groupBy" : [ {
+          "target" : "name",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "name"
+          },
+          "description" : "",
+          "_row_id" : ""
+        } ]
+      }
+    },
+    "5orn-dokzjY_FROS42beQ$$ctT9a5eNfGrzOcGkBq_If" : {
+      "id" : "5orn-dokzjY_FROS42beQ$$ctT9a5eNfGrzOcGkBq_If",
+      "component" : "Join",
+      "metadata" : {
+        "label" : "Join_Income_to_Tradelines",
+        "slug" : "Join_Income_to_Tradelines",
+        "x" : -1638.9999999999998,
+        "y" : -481.1,
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false,
+        "isImported" : false
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "RxW0rVd1bL48OjwhXO554$$MaCSRlMHr5-KeeA8tgmXw",
+          "slug" : "in0"
+        }, {
+          "id" : "B9yhCy8qDGhClj_Sg1p-1$$3rEf9pzt6RjcFuFnJuKfJ",
+          "slug" : "in1"
+        } ],
+        "outputs" : [ {
+          "id" : "PXygJXehCnKxAC1k8TzAW$$dXNbU13dyFakgKWrD1UCZ",
+          "slug" : "out",
+          "schema" : {
+            "type" : "struct",
+            "fields" : [ {
+              "name" : "CUSTOMER_ID",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "CUSTOMER_NAME",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "REPORTED_INCOME",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "DOB",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "Address",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "Name",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "SSN",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "Trades",
+              "type" : {
+                "type" : "struct",
+                "fields" : [ {
+                  "name" : "Trade",
+                  "type" : {
+                    "type" : "array",
+                    "elementType" : {
+                      "type" : "struct",
+                      "fields" : [ {
+                        "name" : "AccountNumber",
+                        "type" : "string",
+                        "nullable" : true,
+                        "metadata" : {
+                          "description" : "",
+                          "mappings" : [ ],
+                          "tags" : [ ]
+                        }
+                      }, {
+                        "name" : "Balance",
+                        "type" : "long",
+                        "nullable" : true,
+                        "metadata" : {
+                          "description" : "",
+                          "mappings" : [ ],
+                          "tags" : [ ]
+                        }
+                      }, {
+                        "name" : "DateOpened",
+                        "type" : "date",
+                        "nullable" : true,
+                        "metadata" : {
+                          "description" : "",
+                          "mappings" : [ ],
+                          "tags" : [ ]
+                        }
+                      }, {
+                        "name" : "PastDue",
+                        "type" : "long",
+                        "nullable" : true,
+                        "metadata" : {
+                          "description" : "",
+                          "mappings" : [ ],
+                          "tags" : [ ]
+                        }
+                      }, {
+                        "name" : "Terms",
+                        "type" : "string",
+                        "nullable" : true,
+                        "metadata" : {
+                          "description" : "",
+                          "mappings" : [ ],
+                          "tags" : [ ]
+                        }
+                      } ]
+                    },
+                    "containsNull" : true
+                  },
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                } ]
+              },
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            } ]
+          }
+        } ],
+        "selectedInputFields" : [ ],
+        "isCustomOutputSchema" : true
+      },
+      "properties" : {
+        "conditions" : [ {
+          "alias" : "in1",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "in0.CUSTOMER_NAME = in1.Name"
+          },
+          "joinType" : "inner"
+        } ],
+        "expressions" : [ ],
+        "hints" : [ {
+          "id" : "RxW0rVd1bL48OjwhXO554$$MaCSRlMHr5-KeeA8tgmXw",
+          "alias" : "in0",
+          "hintType" : "none",
+          "propagateColumns" : false
+        }, {
+          "id" : "B9yhCy8qDGhClj_Sg1p-1$$3rEf9pzt6RjcFuFnJuKfJ",
+          "alias" : "in1",
+          "hintType" : "none",
+          "propagateColumns" : false
+        } ],
+        "allIn1" : null,
+        "activeTab" : "expressions",
+        "columnsSelector" : [ "B9yhCy8qDGhClj_Sg1p-1$$3rEf9pzt6RjcFuFnJuKfJ##Name", "RxW0rVd1bL48OjwhXO554$$MaCSRlMHr5-KeeA8tgmXw##CUSTOMER_NAME" ],
+        "allIn0" : null,
+        "whereClause" : null,
+        "headAlias" : "in0"
+      }
+    },
+    "QWfluIXAdr_cfXskwyY1W$$s7-PaW0LjhpcWuWfuy8qq" : {
+      "id" : "QWfluIXAdr_cfXskwyY1W$$s7-PaW0LjhpcWuWfuy8qq",
+      "component" : "SetOperation",
+      "metadata" : {
+        "label" : "SetOperation_1",
+        "slug" : "SetOperation_1",
+        "x" : -1214.7874999999995,
+        "y" : -400.71249999999986,
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false,
+        "isImported" : false
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "Z4R3i1rpkSard4nAtPu9X$$N9yordTi12ZIR7T7YtCng",
+          "slug" : "in0"
+        }, {
+          "id" : "EeKzJ7UFL309OHkqv4528$$AIlp8jBT6wO0imrAyhM26",
+          "slug" : "in1"
+        } ],
+        "outputs" : [ {
+          "id" : "y-oQUwr1yD05-Y2BXO-KO$$fwEw3af3kQ2xAfsRqIami",
+          "slug" : "out"
+        } ],
+        "selectedInputFields" : [ ],
+        "isCustomOutputSchema" : false
+      },
+      "properties" : {
+        "operationType" : "unionAll"
+      }
+    }
+  },
+  "ports" : {
+    "inputs" : [ ],
+    "outputs" : [ ],
+    "selectedInputFields" : [ ],
+    "isCustomOutputSchema" : false
+  }
+}
