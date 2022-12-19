@@ -1,0 +1,367 @@
+{
+  "queries": [
+    {
+      "id": "62f30488-7bac-4ee0-9d88-8bf0d12dda56",
+      "name": "Prophecy Income Distribution",
+      "description": null,
+      "query": "select cast(reported_income as long) reported_income from bronze_credit_income_csv",
+      "options": {
+        "parent": "folders/2917847714554625",
+        "apply_auto_limit": true,
+        "folder_node_status": "ACTIVE",
+        "folder_node_internal_name": "tree/970637548994239",
+        "visualization_control_order": [],
+        "catalog": "hive_metastore",
+        "schema": "default",
+        "parameters": []
+      },
+      "visualizations": [
+        {
+          "id": "85d75fee-fbd3-4fce-ae41-704f16acf909",
+          "type": "TABLE",
+          "name": "Results",
+          "description": "",
+          "options": {
+            "version": 2
+          },
+          "query_plan": null
+        },
+        {
+          "id": "ac9d1724-e995-4424-af13-b6071eb818a2",
+          "type": "CHART",
+          "name": "Histogram 1",
+          "description": "",
+          "options": {
+            "version": 2,
+            "globalSeriesType": "histogram",
+            "sortX": true,
+            "sortY": true,
+            "legend": {
+              "traceorder": "normal"
+            },
+            "xAxis": {
+              "type": "-",
+              "labels": {
+                "enabled": true
+              }
+            },
+            "yAxis": [
+              {
+                "type": "-"
+              },
+              {
+                "type": "-",
+                "opposite": true
+              }
+            ],
+            "alignYAxesAtZero": true,
+            "error_y": {
+              "type": "data",
+              "visible": true
+            },
+            "series": {
+              "stacking": null,
+              "error_y": {
+                "type": "data",
+                "visible": true
+              }
+            },
+            "seriesOptions": {},
+            "valuesOptions": {},
+            "direction": {
+              "type": "counterclockwise"
+            },
+            "sizemode": "diameter",
+            "coefficient": 1,
+            "numberFormat": "0,0[.]00000",
+            "percentFormat": "0[.]00%",
+            "textFormat": "",
+            "missingValuesAsZero": true,
+            "useAggregationsUi": true,
+            "swappedAxes": false,
+            "dateTimeFormat": "YYYY-MM-DD HH:mm",
+            "showDataLabels": false,
+            "numBins": 3,
+            "columnConfigurationMap": {
+              "x": {
+                "column": "reported_income",
+                "id": "column_c2a8183370415"
+              }
+            }
+          },
+          "query_plan": {
+            "selects": [
+              {
+                "function": "BIN",
+                "args": [
+                  {
+                    "column": "reported_income"
+                  },
+                  {
+                    "number": 3
+                  }
+                ],
+                "alias": "reported_income_BIN"
+              },
+              {
+                "function": "BIN_LOWER_BOUND",
+                "args": [
+                  {
+                    "column": "reported_income"
+                  },
+                  {
+                    "number": 3
+                  }
+                ],
+                "alias": "reported_income_BIN_LOWER_BOUND"
+              },
+              {
+                "function": "BIN_STEP",
+                "args": [
+                  {
+                    "column": "reported_income"
+                  },
+                  {
+                    "number": 3
+                  }
+                ],
+                "alias": "reported_income_BIN_STEP"
+              },
+              {
+                "function": "COUNT",
+                "args": [
+                  {
+                    "column": "reported_income"
+                  }
+                ],
+                "alias": "COUNT"
+              }
+            ],
+            "groups": [
+              {
+                "column": "reported_income_BIN"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "397ea467-4887-4448-aa12-ba4f1098a60c",
+      "name": "Prophecy DTI DTI",
+      "description": null,
+      "query": "select name, 100*debt / income dti_total \nfrom gold_credit_dti",
+      "options": {
+        "parent": "folders/2917847714554625",
+        "apply_auto_limit": true,
+        "folder_node_status": "ACTIVE",
+        "folder_node_internal_name": "tree/970637548994141",
+        "visualization_control_order": [],
+        "catalog": "hive_metastore",
+        "schema": "default",
+        "parameters": []
+      },
+      "visualizations": [
+        {
+          "id": "9e9e4ff2-dcc1-4a6a-bc13-a8a165434f0e",
+          "type": "TABLE",
+          "name": "Results",
+          "description": "",
+          "options": {
+            "version": 2
+          },
+          "query_plan": null
+        }
+      ]
+    },
+    {
+      "id": "f8dc369e-eeb0-4943-a710-61ecfcb46f47",
+      "name": "Prophecy DTI Debt",
+      "description": null,
+      "query": "select sum(debt) total_debt \nfrom gold_credit_dti",
+      "options": {
+        "parent": "folders/2917847714554625",
+        "apply_auto_limit": true,
+        "folder_node_status": "ACTIVE",
+        "folder_node_internal_name": "tree/970637548994140",
+        "visualization_control_order": [],
+        "parameters": []
+      },
+      "visualizations": [
+        {
+          "id": "29abe4cb-c416-48a5-ab1d-8ce2460cb34a",
+          "type": "COUNTER",
+          "name": "Counter 1",
+          "description": "",
+          "options": {
+            "counterLabel": "Total Customer Debt",
+            "counterColName": "total_debt",
+            "rowNumber": 1,
+            "targetRowNumber": 1,
+            "stringDecimal": 2,
+            "stringDecChar": ".",
+            "stringThouSep": ",",
+            "tooltipFormat": "0,0.000",
+            "stringPrefix": "$"
+          },
+          "query_plan": null
+        },
+        {
+          "id": "2e26e4b0-3875-4a12-aa30-13525218c6d2",
+          "type": "TABLE",
+          "name": "Results",
+          "description": "",
+          "options": {
+            "version": 2
+          },
+          "query_plan": null
+        }
+      ]
+    },
+    {
+      "id": "7048cd8f-363c-4f72-9fce-6d7882c3577a",
+      "name": "New query",
+      "description": null,
+      "query": "select count(1) from gold_credit_dti",
+      "options": {
+        "parent": "folders/2917847714554625",
+        "apply_auto_limit": true,
+        "folder_node_status": "ACTIVE",
+        "folder_node_internal_name": "tree/970637548994297",
+        "visualization_control_order": [],
+        "catalog": "hive_metastore",
+        "schema": "default",
+        "parameters": []
+      },
+      "visualizations": [
+        {
+          "id": "81c98d04-58f9-41ce-bb36-fea13a5b4147",
+          "type": "COUNTER",
+          "name": "Counter 1",
+          "description": "",
+          "options": {
+            "counterLabel": "Number of Customers",
+            "counterColName": "count(1)",
+            "rowNumber": 1,
+            "targetRowNumber": 1,
+            "stringDecimal": 0,
+            "stringDecChar": ".",
+            "stringThouSep": ",",
+            "tooltipFormat": "0,0.000"
+          },
+          "query_plan": null
+        },
+        {
+          "id": "a250bbb9-5adb-4c4f-a92c-bfaf9718ed29",
+          "type": "TABLE",
+          "name": "Results",
+          "description": "",
+          "options": {
+            "version": 2
+          },
+          "query_plan": null
+        }
+      ]
+    }
+  ],
+  "dashboard": {
+    "id": "07e46ca2-f4e2-4376-87ae-22c42198522f",
+    "name": "Prophecy Credit Decision Dashboard",
+    "widgets": [
+      {
+        "id": "0dfdb54d-425b-4a4f-b2c5-fb216cd8eb9e",
+        "width": 1,
+        "options": {
+          "parameterMappings": {},
+          "isHidden": false,
+          "position": {
+            "autoHeight": false,
+            "sizeX": 2,
+            "sizeY": 7,
+            "minSizeX": 1,
+            "maxSizeX": 6,
+            "minSizeY": 1,
+            "maxSizeY": 1000,
+            "col": 0,
+            "row": 0
+          }
+        },
+        "dashboard_id": "07e46ca2-f4e2-4376-87ae-22c42198522f",
+        "text": "",
+        "visualization_id": "29abe4cb-c416-48a5-ab1d-8ce2460cb34a"
+      },
+      {
+        "id": "65594e5c-e716-4776-b07f-45602170f3c6",
+        "width": 1,
+        "options": {
+          "parameterMappings": {},
+          "isHidden": false,
+          "position": {
+            "autoHeight": false,
+            "sizeX": 6,
+            "sizeY": 7,
+            "minSizeX": 2,
+            "maxSizeX": 6,
+            "minSizeY": 1,
+            "maxSizeY": 1000,
+            "col": 0,
+            "row": 7
+          }
+        },
+        "dashboard_id": "07e46ca2-f4e2-4376-87ae-22c42198522f",
+        "text": "",
+        "visualization_id": "9e9e4ff2-dcc1-4a6a-bc13-a8a165434f0e"
+      },
+      {
+        "id": "fbf15889-c5da-4a27-b0ea-2bc36a53dbb5",
+        "width": 1,
+        "options": {
+          "parameterMappings": {},
+          "isHidden": false,
+          "position": {
+            "autoHeight": false,
+            "sizeX": 2,
+            "sizeY": 7,
+            "minSizeX": 1,
+            "maxSizeX": 6,
+            "minSizeY": 5,
+            "maxSizeY": 1000,
+            "col": 4,
+            "row": 0
+          }
+        },
+        "dashboard_id": "07e46ca2-f4e2-4376-87ae-22c42198522f",
+        "text": "",
+        "visualization_id": "ac9d1724-e995-4424-af13-b6071eb818a2"
+      },
+      {
+        "id": "f94145c8-dca4-47bc-b00b-80c9340a9f25",
+        "width": 1,
+        "options": {
+          "parameterMappings": {},
+          "isHidden": false,
+          "position": {
+            "autoHeight": false,
+            "sizeX": 2,
+            "sizeY": 7,
+            "minSizeX": 1,
+            "maxSizeX": 6,
+            "minSizeY": 1,
+            "maxSizeY": 1000,
+            "col": 2,
+            "row": 0
+          }
+        },
+        "dashboard_id": "07e46ca2-f4e2-4376-87ae-22c42198522f",
+        "text": "",
+        "visualization_id": "81c98d04-58f9-41ce-bb36-fea13a5b4147"
+      }
+    ],
+    "tags": [],
+    "color_palette": null,
+    "dashboard_filters_enabled": false,
+    "parent": "folders/2917847714554625",
+    "is_archived": false
+  },
+  "version": "1.0"
+}
