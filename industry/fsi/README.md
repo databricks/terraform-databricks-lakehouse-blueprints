@@ -6,7 +6,7 @@ What is an industry quickstart? It's a simple, self-contained demo that makes it
 
 ### Technology Integrations
 
-Databricks has a broad range of technology partners, and as part of the quickstarts seen here, we will aim to integrate these into our industry quickstarts. So far, we have ~[dbt](https://www.getdbt.com/) and ![Prophecy](https://www.prophecy.io/) represented, with more to come!
+Databricks has a broad range of technology partners, and as part of the quickstarts seen here, we will aim to integrate these into our industry quickstarts. So far, we have [dbt](https://www.getdbt.com/) and [Prophecy](https://www.prophecy.io/) represented, with more to come!
 
 ![Technology Ecosystem](https://www.databricks.com/wp-content/uploads/2022/08/isv-ecosytem-for-web-img.png)
 
