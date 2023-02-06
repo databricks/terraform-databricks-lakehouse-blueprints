@@ -11,6 +11,8 @@ resource "azurerm_virtual_network" "this" {
 }
 
 module "spoke_vnet" {
+  # TODO: Get rid of redundant variables - source them from `id`s or something
+  # TODO: Add Routes for service tags to the route table
   source                              = "../../modules/azure_spoke_vnet"
   project_name                        = var.project_name
   location                            = azurerm_virtual_network.this.location
@@ -23,7 +25,6 @@ module "spoke_vnet" {
   spoke_resource_group_name           = var.spoke_resource_group_name
   scc_relay_address_prefixes          = var.scc_relay_address_prefixes
   privatelink_subnet_address_prefixes = var.privatelink_subnet_address_prefixes
-  webapp_and_infra_routes             = var.webapp_and_infra_routes
   public_repos                        = var.public_repos
   tags                                = var.tags
 }

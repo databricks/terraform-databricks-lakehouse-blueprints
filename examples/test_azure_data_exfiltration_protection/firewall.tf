@@ -1,13 +1,3 @@
-locals {
-  title_cased_location = title(var.location)
-  service_tags = {
-    "databricks" : { "tag" : "AzureDatabricks", "port" : "443" },
-    "sql" : { "tag" : "Sql.${local.title_cased_location}", "port" : "3306" },
-    "storage" : { "tag" : "Storage.${local.title_cased_location}", "port" : "443" },
-    "eventhub" : { "tag" : "EventHub.${local.title_cased_location}", "port" : "9093" }
-  }
-}
-
 resource "azurerm_subnet" "firewall" {
   name                 = "AzureFirewallSubnet"
   resource_group_name  = azurerm_resource_group.this.name
@@ -72,44 +62,6 @@ resource "azurerm_firewall_policy_rule_collection_group" "this" {
       protocols {
         port = "80"
         type = "Http"
-      }
-    }
-
-    rule {
-      name              = "ganglia-ui"
-      source_addresses  = ["*"]
-      destination_fqdns = ["cdnjs.com", "cdnjs.cloudflare.com"]
-      protocols {
-        port = "443"
-        type = "Https"
-      }
-    }
-  }
-
-  network_rule_collection {
-    name     = "databricks-network-rc"
-    priority = 100
-    action   = "Allow"
-
-    dynamic "rule" {
-      for_each = var.webapp_and_infra_routes
-      content {
-        name                  = rule.key
-        source_addresses      = ["*"]
-        destination_ports     = ["443"]
-        destination_addresses = [rule.value]
-        protocols             = ["TCP"]
-      }
-    }
-
-    dynamic "rule" {
-      for_each = local.service_tags
-      content {
-        name                  = rule.key
-        source_addresses      = ["*"]
-        destination_addresses = [rule.value.tag]
-        destination_ports     = [rule.value.port]
-        protocols             = ["TCP"]
       }
     }
   }

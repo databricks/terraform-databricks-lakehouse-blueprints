@@ -1,3 +1,13 @@
+# locals {
+#   title_cased_location = title(var.location)
+#   service_tags = {
+#     "databricks" : { "tag" : "AzureDatabricks", "port" : "443" },
+#     "sql" : { "tag" : "Sql.${local.title_cased_location}", "port" : "3306" },
+#     "storage" : { "tag" : "Storage.${local.title_cased_location}", "port" : "443" },
+#     "eventhub" : { "tag" : "EventHub.${local.title_cased_location}", "port" : "9093" }
+#   }
+# }
+
 resource "azurerm_resource_group" "this" {
   name     = var.spoke_resource_group_name
   location = var.location
