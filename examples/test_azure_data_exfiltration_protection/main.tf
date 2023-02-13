@@ -17,15 +17,11 @@ module "spoke_vnet" {
   project_name                        = var.project_name
   location                            = azurerm_virtual_network.this.location
   hub_vnet_name                       = azurerm_virtual_network.this.name
-  hub_vnet_id                         = azurerm_virtual_network.this.id
   hub_resource_group_name             = azurerm_resource_group.this.name
-  firewall_name                       = azurerm_firewall.this.name
   firewall_private_ip                 = azurerm_firewall.this.ip_configuration[0].private_ip_address
   spoke_vnet_address_space            = var.spoke_vnet_address_space
   spoke_resource_group_name           = var.spoke_resource_group_name
-  scc_relay_address_prefixes          = var.scc_relay_address_prefixes
   privatelink_subnet_address_prefixes = var.privatelink_subnet_address_prefixes
-  public_repos                        = var.public_repos
   tags                                = var.tags
 }
 
