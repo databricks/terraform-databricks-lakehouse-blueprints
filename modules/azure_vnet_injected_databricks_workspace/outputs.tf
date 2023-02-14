@@ -8,6 +8,11 @@ output "workspace_id" {
   description = "ID of the Databricks workspace"
 }
 
+output "databricks_workspace_id" {
+  value       = tonumber(azurerm_databricks_workspace.this.workspace_id)
+  description = "ID of the Databricks workspace in the Databricks Control Plane"
+}
+
 output "workspace_url" {
   value = azurerm_databricks_workspace.this.workspace_url
 }
