@@ -24,10 +24,8 @@ module "spoke_vnet" {
   privatelink_subnet_address_prefixes = var.privatelink_subnet_address_prefixes
   tags                                = var.tags
   depends_on = [
-    resource.azurerm_resource_group.this,
-    resource.azurerm_virtual_network.this
+    resource.azurerm_resource_group.this
   ]
-
 }
 
 module "spoke_databricks_workspace" {
@@ -42,11 +40,6 @@ module "spoke_databricks_workspace" {
   private_subnet_address_prefixes = var.private_subnet_address_prefixes
   public_subnet_address_prefixes  = var.public_subnet_address_prefixes
   tags                            = var.tags
-
-  depends_on = [
-    module.spoke_vnet
-  ]
-
 }
 
 
@@ -55,9 +48,5 @@ module "unity_catalog" {
 
   resource_group_id       = azurerm_resource_group.this.id
   workspaces_to_associate = [module.spoke_databricks_workspace.databricks_workspace_id]
-
-  depends_on = [
-    module.spoke_databricks_workspace
-  ]
 
 }

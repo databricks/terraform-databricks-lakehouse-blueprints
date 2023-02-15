@@ -70,7 +70,7 @@ variable "firewall_subnet_address_prefixes" {
 variable "public_repos" {
   type        = list(string)
   description = "(Optional) List of public repository IP addresses to allow access to."
-  default     = ["*.pypi.org", "*pythonhosted.org", "cran.r-project.org"]
+  default     = ["python.org", "*.python.org", "pypi.org", "*.pypi.org", "pythonhosted.org", "*.pythonhosted.org", "cran.r-project.org", "*.cran.r-project.org", "r-project.org"]
 }
 
 variable "tags" {
