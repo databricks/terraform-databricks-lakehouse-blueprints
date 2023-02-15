@@ -9,3 +9,7 @@ output "virtual_network_name" {
 output "firewall_name" {
   value = azurerm_firewall.this.name
 }
+
+output "workspace_url" {
+  value = module.spoke_databricks_workspace.workspace_url
+}

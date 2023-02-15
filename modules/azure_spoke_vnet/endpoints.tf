@@ -50,6 +50,11 @@ resource "azurerm_private_endpoint" "storage" {
     name                 = "privatelink.dfs.core.windows.net"
     private_dns_zone_ids = [azurerm_private_dns_zone.storage.id]
   }
+
+  depends_on = [
+    resource.azurerm_subnet.privatelink,
+    resource.azurerm_virtual_network.this
+  ]
 }
 
 resource "azurerm_private_dns_a_record" "this" {
