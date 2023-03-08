@@ -11,8 +11,6 @@ resource "azurerm_virtual_network" "this" {
 }
 
 module "spoke_vnet" {
-  # TODO: Get rid of redundant variables - source them from `id`s or something
-  # TODO: Add Routes for service tags to the route table
   source                              = "../../modules/azure_spoke_vnet"
   project_name                        = var.project_name
   location                            = azurerm_virtual_network.this.location

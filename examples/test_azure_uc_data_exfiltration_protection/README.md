@@ -9,6 +9,8 @@ This Terraform configuration is an implementation of the above blog post.
 Note: the firewall rules deviate slightly in that outbound traffic from the firewall is allowed to Databricks resources instead of specifying Databricks worker subnets.
 This is to simplify outbound routing in the event that multiple `spoke`s are desired.
 
+Additionally, note that Unity Catalog has been included in this template in order to help modernize the architecture to current standards.
+
 This guide is provided as-is and you can use this guide as the basis for your custom Terraform module.
 
 It uses the following variables in configurations:
