@@ -4,7 +4,6 @@ variable "resource_group_id" {
 }
 
 variable "workspaces_to_associate" {
-  type        = list(string)
+  type        = list(number)
   description = "(Optional) List of Databricks Workspace IDs to associate with Unity Catalog"
-  default     = []
 }

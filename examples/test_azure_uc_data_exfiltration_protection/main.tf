@@ -11,8 +11,6 @@ resource "azurerm_virtual_network" "this" {
 }
 
 module "spoke_vnet" {
-  # TODO: Get rid of redundant variables - source them from `id`s or something
-  # TODO: Add Routes for service tags to the route table
   source                              = "../../modules/azure_spoke_vnet"
   project_name                        = var.project_name
   location                            = azurerm_virtual_network.this.location
@@ -23,6 +21,9 @@ module "spoke_vnet" {
   spoke_resource_group_name           = var.spoke_resource_group_name
   privatelink_subnet_address_prefixes = var.privatelink_subnet_address_prefixes
   tags                                = var.tags
+  depends_on = [
+    resource.azurerm_resource_group.this
+  ]
 }
 
 module "spoke_databricks_workspace" {
@@ -37,4 +38,13 @@ module "spoke_databricks_workspace" {
   private_subnet_address_prefixes = var.private_subnet_address_prefixes
   public_subnet_address_prefixes  = var.public_subnet_address_prefixes
   tags                            = var.tags
+}
+
+
+module "unity_catalog" {
+  source = "../../modules/azure_uc"
+
+  resource_group_id       = azurerm_resource_group.this.id
+  workspaces_to_associate = [module.spoke_databricks_workspace.databricks_workspace_id]
+
 }

@@ -4,7 +4,7 @@ resource "azurerm_subnet" "privatelink" {
   virtual_network_name = azurerm_virtual_network.this.name
 
   address_prefixes                               = var.privatelink_subnet_address_prefixes
-  enforce_private_link_endpoint_network_policies = true
+  private_endpoint_network_policies_enabled      = true
 }
 
 resource "random_string" "suffix" {
@@ -50,6 +50,11 @@ resource "azurerm_private_endpoint" "storage" {
     name                 = "privatelink.dfs.core.windows.net"
     private_dns_zone_ids = [azurerm_private_dns_zone.storage.id]
   }
+
+  depends_on = [
+    resource.azurerm_subnet.privatelink,
+    resource.azurerm_virtual_network.this
+  ]
 }
 
 resource "azurerm_private_dns_a_record" "this" {

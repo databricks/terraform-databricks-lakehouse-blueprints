@@ -1,3 +1,18 @@
+locals {
+  title_cased_location = title(var.location)
+  service_tags = {
+    "databricks" : "AzureDatabricks",
+    "sql" : "Sql.${local.title_cased_location}",
+    "storage" : "Storage.${local.title_cased_location}",
+    "eventhub" : "EventHub.${local.title_cased_location}"
+  }
+}
+
+data "azurerm_virtual_network" "hub" {
+  name                = var.hub_vnet_name
+  resource_group_name = var.hub_resource_group_name
+}
+
 resource "azurerm_resource_group" "this" {
   name     = var.spoke_resource_group_name
   location = var.location
@@ -14,7 +29,7 @@ resource "azurerm_virtual_network_peering" "spoke_to_hub" {
   name                      = format("from-%s-to-%s-peer", azurerm_virtual_network.this.name, var.hub_vnet_name)
   resource_group_name       = azurerm_resource_group.this.name
   virtual_network_name      = azurerm_virtual_network.this.name
-  remote_virtual_network_id = var.hub_vnet_id
+  remote_virtual_network_id = data.azurerm_virtual_network.hub.id
 }
 
 resource "azurerm_virtual_network_peering" "hub_to_spoke" {
@@ -45,11 +60,11 @@ resource "azurerm_route" "firewall_route" {
   next_hop_in_ip_address = var.firewall_private_ip
 }
 
-resource "azurerm_route" "scc_routes" {
-  count               = length(var.scc_relay_address_prefixes)
-  name                = "to-SCC-relay-ip-${count.index}"
+resource "azurerm_route" "service_tags" {
+  for_each            = local.service_tags
+  name                = each.key
   resource_group_name = azurerm_resource_group.this.name
   route_table_name    = azurerm_route_table.this.name
-  address_prefix      = var.scc_relay_address_prefixes[count.index]
+  address_prefix      = each.value
   next_hop_type       = "Internet"
 }

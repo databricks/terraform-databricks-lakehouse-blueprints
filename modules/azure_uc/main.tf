@@ -3,7 +3,13 @@ locals {
   subscription_id = regex(local.resource_regex, var.resource_group_id)[0]
   resource_group  = regex(local.resource_regex, var.resource_group_id)[1]
   tenant_id       = data.azurerm_client_config.current.tenant_id
-  prefix          = replace(replace(lower(data.azurerm_resource_group.this.name), "rg", ""), "-", "")
+  prefix          = replace(replace(lower("${data.azurerm_resource_group.this.name}${random_string.naming.result}"), "rg", ""), "-", "")
+}
+
+resource "random_string" "naming" {
+  special = false
+  upper = false
+  length = 6
 }
 
 data "azurerm_resource_group" "this" {
