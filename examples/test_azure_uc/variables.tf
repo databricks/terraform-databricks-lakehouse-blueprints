@@ -16,3 +16,5 @@ variable "workspaces_to_associate" {
 
 variable "databricks_resource_id" {}
 
+variable "workspace_url" {}
+

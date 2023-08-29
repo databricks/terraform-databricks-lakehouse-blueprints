@@ -10,4 +10,5 @@ module "unity_catalog" {
   resource_group_id       = var.resource_group_name
   workspaces_to_associate = var.workspaces_to_associate
   databricks_resource_id = var.databricks_resource_id
+  workspace_url = var.workspace_url
 }
