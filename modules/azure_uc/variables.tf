@@ -7,3 +7,9 @@ variable "workspaces_to_associate" {
   type        = list(number)
   description = "(Optional) List of Databricks Workspace IDs to associate with Unity Catalog"
 }
+
+variable "location" {}
+
+variable "databricks_resource_id" {}
+
+variable "workspace_url" {}
