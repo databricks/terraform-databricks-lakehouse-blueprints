@@ -7,46 +7,6 @@ data "databricks_node_type" "smallest" {
   local_disk = true
 }
 
-resource "databricks_catalog" "aws_industry_catalog" {
-  provider=databricks.spoke_aws_workspace
-  metastore_id = var.aws_metastore_id
-  name         = "industry_fe"
-  comment      = "this catalog is managed by terraform"
-  properties = {
-    purpose = "testing"
-  }
-}
-
-resource "databricks_catalog" "azure_industry_catalog" {
-  provider=databricks.spoke_azure_workspace
-  metastore_id = var.azure_metastore_id
-  name         = "industry_fe"
-  comment      = "this catalog is managed by terraform"
-  properties = {
-    purpose = "testing"
-  }
-}
-
-resource "databricks_grants" "grant_aws_industry_example_catalog" {
-  provider=databricks.spoke_aws_workspace
-  catalog = "industry_fe"
-  grant {
-    principal  = "Account Users"
-    privileges = ["ALL_PRIVILEGES"]
-  }
-  depends_on = [databricks_catalog.aws_industry_catalog]
-}
-
-resource "databricks_grants" "grant_azure_industry_example_catalog" {
-  provider=databricks.spoke_azure_workspace
-  catalog = "industry_fe"
-  grant {
-    principal  = "Account Users"
-    privileges = ["ALL_PRIVILEGES"]
-  }
-    depends_on = [databricks_catalog.azure_industry_catalog]
-}
-
 # Upload the local Python file to DBFS (Databricks File System)
 resource "databricks_dbfs_file" "aws_python_file" {
     provider = databricks.spoke_aws_workspace
@@ -122,16 +82,16 @@ output "dbfs_path" {
 
 data "databricks_tables" "aws_cyber_tables" {
   provider = databricks.spoke_aws_workspace
-  catalog_name = "industry_fe"
+  catalog_name = "cyber_catalog"
   schema_name  = "ioc_matching_${split("@", var.aws_hub_databricks_username)[0]}"
-  depends_on = [databricks_job.load_aws, databricks_job.load_azure, databricks_grants.grant_aws_industry_example_catalog ]
+  depends_on = [databricks_job.load_aws, databricks_job.load_azure]
 }
 
 data "databricks_tables" "azure_cyber_tables" {
   provider = databricks.spoke_azure_workspace
-  catalog_name = "industry_fe"
+  catalog_name = "cyber_catalog"
   schema_name  = "ioc_matching_${split("@", var.aws_hub_databricks_username)[0]}"
-  depends_on = [databricks_job.load_azure, databricks_grants.grant_azure_industry_example_catalog]
+  depends_on = [databricks_job.load_azure]
 }
 
 resource "databricks_share" "aws_share" {

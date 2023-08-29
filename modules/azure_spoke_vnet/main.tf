@@ -53,3 +53,26 @@ resource "azurerm_route" "scc_routes" {
   address_prefix      = var.scc_relay_address_prefixes[count.index]
   next_hop_type       = "Internet"
 }
+
+# Create storage account
+resource "azurerm_storage_account" "external_storage_example" {
+  name                     = "blueprintsa"
+  resource_group_name      = azurerm_resource_group.this.name
+  location                 = azurerm_resource_group.this.location
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+
+  # Firewall Settings
+  network_rules {
+    default_action             = "Deny"
+    ip_rules                   = ["100.0.0.1", "100.0.0.2"]
+    virtual_network_subnet_ids = []
+  }
+}
+
+# Create storage container
+resource "azurerm_storage_container" "external_container_example" {
+  name                  = "content"
+  storage_account_name  = azurerm_storage_account.this.name
+  container_access_type = "private"
+}

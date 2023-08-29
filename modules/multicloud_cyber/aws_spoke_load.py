@@ -1,5 +1,4 @@
-spark.sql("create catalog if not exists industry_fe")
-spark.sql("use catalog industry_fe")
+spark.sql("use catalog cyber_catalog")
 
 import os
 import re

@@ -1,9 +1,17 @@
+data "azurerm_databricks_workspace" "this" {
+  name                = local.databricks_workspace_name
+  resource_group_name = local.resource_group
+}
+
 locals {
-  resource_regex  = "/subscriptions/(.+)/resourceGroups/(.+)"
-  subscription_id = regex(local.resource_regex, var.resource_group_id)[0]
-  resource_group  = regex(local.resource_regex, var.resource_group_id)[1]
-  tenant_id       = data.azurerm_client_config.current.tenant_id
-  prefix          = replace(replace(lower(data.azurerm_resource_group.this.name), "rg", ""), "-", "")
+  resource_regex            = "(?i)subscriptions/(.+)/resourceGroups/(.+)/providers/Microsoft.Databricks/workspaces/(.+)"
+  subscription_id           = regex(local.resource_regex, var.databricks_resource_id)[0]
+  resource_group            = regex(local.resource_regex, var.databricks_resource_id)[1]
+  databricks_workspace_name = regex(local.resource_regex, var.databricks_resource_id)[2]
+  tenant_id                 = data.azurerm_client_config.current.tenant_id
+  databricks_workspace_host = data.azurerm_databricks_workspace.this.workspace_url
+  databricks_workspace_id   = data.azurerm_databricks_workspace.this.workspace_id
+  prefix                    = replace(replace(lower(data.azurerm_resource_group.this.name), "rg", ""), "-", "")
 }
 
 data "azurerm_resource_group" "this" {
@@ -38,14 +46,8 @@ resource "azurerm_storage_container" "unity_catalog" {
   container_access_type = "private"
 }
 
-resource "azurerm_role_assignment" "example" {
-  scope                = azurerm_storage_account.unity_catalog.id
-  role_definition_name = "Storage Blob Data Contributor"
-  principal_id         = azurerm_databricks_access_connector.unity.identity[0].principal_id
-}
-
 resource "databricks_metastore" "this" {
-  name = "primary"
+  name = "regulated-fins-metastore"
   storage_root = format("abfss://%s@%s.dfs.core.windows.net/",
     azurerm_storage_container.unity_catalog.name,
   azurerm_storage_account.unity_catalog.name)
@@ -54,7 +56,7 @@ resource "databricks_metastore" "this" {
 
 resource "databricks_metastore_data_access" "first" {
   metastore_id = databricks_metastore.this.id
-  name         = "the-keys"
+  name         = "regulated-fins-ms-data-access"
   azure_managed_identity {
     access_connector_id = azurerm_databricks_access_connector.unity.id
   }

@@ -128,4 +128,5 @@ resource "azurerm_firewall" "this" {
     subnet_id            = azurerm_subnet.firewall.id
     public_ip_address_id = azurerm_public_ip.this.id
   }
+  depends_on = [azurerm_firewall_policy_rule_collection_group.this]
 }

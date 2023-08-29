@@ -3,5 +3,5 @@ provider "azurerm" {
 }
 
 provider "databricks" {
-  host = azurerm_databricks_workspace.this.workspace_url
+  host ="https://adb-2319045324119159.19.azuredatabricks.net"
 }
