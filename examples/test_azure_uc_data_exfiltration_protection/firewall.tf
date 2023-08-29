@@ -50,7 +50,7 @@ resource "azurerm_firewall_policy_rule_collection_group" "this" {
     rule {
       name              = "IPinfo"
       source_addresses  = ["*"]
-      destination_fqdns = ["*.ipinfo.io"]
+      destination_fqdns = ["*.ipinfo.io", "ipinfo.io"]
       protocols {
         port = "443"
         type = "Https"
@@ -65,6 +65,11 @@ resource "azurerm_firewall_policy_rule_collection_group" "this" {
       }
     }
   }
+
+  depends_on = [
+    resource.azurerm_firewall_policy.this
+  ]
+
 }
 
 resource "azurerm_firewall" "this" {
@@ -80,5 +85,9 @@ resource "azurerm_firewall" "this" {
     subnet_id            = azurerm_subnet.firewall.id
     public_ip_address_id = azurerm_public_ip.this.id
   }
-  depends_on = [azurerm_firewall_policy_rule_collection_group.this]
+
+  depends_on = [
+    resource.azurerm_firewall_policy_rule_collection_group.this
+  ]
+
 }
