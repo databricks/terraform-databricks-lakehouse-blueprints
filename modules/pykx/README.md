@@ -11,6 +11,10 @@ The Terraform scripts in this repository automate the creation and configuration
 3. **Time Series Merge and Processing**: The second notebook (`ts_compute_delta_lake.py`) performs time series data merging and processing using Pandas UDFs.
 4. **Databricks Job Configuration**: A Databricks workflow is configured to execute these notebooks in sequence, using a shared Databricks jobs cluster.
 
+![PyKX on Delta Lake & Databricks](https://raw.githubusercontent.com/databricks/terraform-databricks-lakehouse-blueprints/main/KX & Databricks Architecture.png)
+
+
+
 ## Terraform Resources and Modules
 
 ### Data Sources
