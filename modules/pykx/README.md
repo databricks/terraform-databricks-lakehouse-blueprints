@@ -14,7 +14,6 @@ The Terraform scripts in this repository automate the creation and configuration
 ![PyKX on Delta Lake & Databricks](https://raw.githubusercontent.com/databricks/terraform-databricks-lakehouse-blueprints/main/KX & Databricks Architecture.png)
 
 
-
 ## Terraform Resources and Modules
 
 ### Data Sources
