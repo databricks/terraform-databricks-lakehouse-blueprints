@@ -3,7 +3,6 @@ terraform {
     bucket = "blueprints-pykx-rp"
     key    = "test-pykx.tfstate"
     region = "us-east-1"
-    profile = "ricardo"
   }
   required_providers {
     databricks = {

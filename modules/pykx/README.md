@@ -23,8 +23,8 @@ The Terraform scripts in this repository automate the creation and configuration
 
 Two Databricks notebooks are created using `databricks_notebook` resources:
 
-1. `read_kdb_save_parquet.py`: Located at `/Users/ricardo.portilla@databricks.com/01-Load-PyKX-Delta`.
-2. `ts_compute_delta_lake.py`: Located at `/Users/ricardo.portilla@databricks.com/02-Merge-Q-Time-Series`.
+1. `read_kdb_save_parquet.py`: Located at `/Users/<your email>/01-Load-PyKX-Delta`.
+2. `ts_compute_delta_lake.py`: Located at `/Users/<your email>/02-Merge-Q-Time-Series`.
 
 These notebooks are populated with the respective Python scripts from the local module path.
 

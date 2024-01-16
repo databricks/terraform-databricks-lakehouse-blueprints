@@ -9,13 +9,13 @@ data "databricks_node_type" "smallest" {
 resource "databricks_notebook" "load" {
     provider = databricks.spoke_aws_workspace
   source = "${path.module}/read_kdb_save_parquet.py"
-  path   = "/Users/ricardo.portilla@databricks.com/01-Load-PyKX-Delta"
+  path   = "${data.databricks_current_user.me.home}/01-Load-PyKX-Delta"
 }
 
 resource "databricks_notebook" "time_series_merge" {
     provider = databricks.spoke_aws_workspace
   source = "${path.module}/ts_compute_delta_lake.py"
-  path   = "/Users/ricardo.portilla@databricks.com/02-Merge-Q-Time-Series"
+  path   = "${data.databricks_current_user.me.home}/02-Merge-Q-Time-Series"
 }
 
 
